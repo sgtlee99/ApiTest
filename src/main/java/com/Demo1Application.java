@@ -9,6 +9,8 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 public class Demo1Application extends SpringBootServletInitializer{
 	//ㅗㅂa
 	//asdfasdfasdfasdf
+	//ㅏㅘㅓㅗㅓㅏㅘㅓㅘ
+
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(Demo1Application.class);
