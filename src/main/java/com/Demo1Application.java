@@ -13,7 +13,11 @@ public class Demo1Application extends SpringBootServletInitializer{
 
 	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+
+		String asdf = " ";
 		return application.sources(Demo1Application.class);
+
+
 	}
 //gvvgvgvjvjv
 	public static void main(String[] args) {
