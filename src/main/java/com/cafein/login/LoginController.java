@@ -22,4 +22,10 @@ public class LoginController {
         dto.getContent();
         return ResponseEntity.ok().body(new dtp());
     }
+
+    @PostMapping("/api/v2/test")//example
+    public ResponseEntity<?> getApiTest3(@RequestBody ReqestDto dto){
+        dto.getContent();
+        return ResponseEntity.ok().body(new dtp());
+    }
 }
