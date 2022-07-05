@@ -1,10 +1,8 @@
 package com.cafein.login;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class LoginController {
@@ -13,5 +11,15 @@ public class LoginController {
     @ResponseStatus(value = HttpStatus.OK)
     public String getApiTest() {
         return "{\"request\" : \"okay\"}";
+    }
+    @GetMapping("/api/v2/test")
+    public ResponseEntity<?> getApiTest2(){
+        return ResponseEntity.ok().body(new dtp());
+    }
+
+    @PostMapping("/api/v2/test")
+    public ResponseEntity<?> getApiTest2(@RequestBody ReqestDto dto){
+        dto.getContent()
+        return ResponseEntity.ok().body(new dtp());
     }
 }
