@@ -19,8 +19,7 @@ public class LoginController {
 
     @PostMapping("/api/v2/test")
     public ResponseEntity<?> getApiTest2(@RequestBody ReqestDto dto){
-        dto.getContent()
+        dto.getContent();
         return ResponseEntity.ok().body(new dtp());
     }
-    //
 }
