@@ -9,22 +9,22 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/user")
+    @PostMapping("/user") // 생성
     public Long create(@RequestBody User user) {
         return userService.save(user);
     }
 
-    @GetMapping("/user/{id}")
+    @GetMapping("/user/{id}") // 조회
     public User read(@PathVariable Long id) {
         return userService.findById(id);
     }
 
-    @PostMapping("/user/{id}/update")
+    @PutMapping("/user/{id}/update") //수정
     public Long update(@PathVariable Long id, @RequestBody String address) {
         return userService.update(id, address);
     }
 
-    @PostMapping("/user/{id}/delete")
+    @DeleteMapping("/user/{id}/delete") //삭제
     public Long delete(@PathVariable Long id) {
         userService.delete(id);
         return id;

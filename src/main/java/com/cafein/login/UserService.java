@@ -11,8 +11,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public User findById(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
     }
 
     @Transactional
