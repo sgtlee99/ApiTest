@@ -12,7 +12,7 @@ public class Demo1Controller {
 
 
 
-
+    @RequestMapping("/") //테스트 페이지
     public String welcome() {
         return "welcome";
     }
