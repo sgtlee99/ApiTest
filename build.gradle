@@ -35,14 +35,11 @@ dependencies {
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	// 아래는 테스트용 의존성 설정(springboottest)
-	testImplementation(platform("org.junit:junit-bom:5.8.2"))
-	testRuntimeOnly("org.junit.platform:junit-platform-launcher") {
-		because("Only needed to run tests in a version of IntelliJ IDEA that bundles older versions")
-	}
-	testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-	testRuntimeOnly("org.junit.vintage:junit-vintage-engine")
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2'
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-test', version: '2.7.0'
+	testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.22.0'
+	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 }
 
 tasks.named('test') {
