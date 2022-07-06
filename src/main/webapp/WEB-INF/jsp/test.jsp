@@ -77,7 +77,7 @@ function form_init(){
 			</table>
 			<div class="container p-3">
 				<div class="btn-group">
-					<input type ="button" value="등록" class="btn btn-primary" id="btnInsert">
+					<input type ="button" value="등z록" class="btn btn-primary" id="btnInsert" onclick="user_insert()">
 					<input type ="button" value="초기화" class="btn btn-info" id="btnInit">
 					<input type ="button" value="수정" class="btn btn-secondary" id="btnUpdate">
 				</div>
