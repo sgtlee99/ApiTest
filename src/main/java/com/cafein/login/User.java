@@ -15,10 +15,28 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
-    private Long id;
+    private Long user_num;
 
     @Column(nullable = false) //DB Column을 명시
-    private String name;
+    private String user_id;
+
+    @Column(nullable = false)
+    private String user_pw;
+
+    @Column(nullable = false)
+    private String user_nick;
+
+    @Column(nullable = false)
+    private boolean user_com; //사용자구분
+
+    @Column(nullable = false)
+    private String user_email;
+
+    @Column(nullable = false)
+    private String user_group;
+
+    @Column(nullable = false)
+    private byte[] user_pro_img;
 
     @Column(nullable = false)
     private int age;
