@@ -32,25 +32,41 @@ public class User {
     @Column(nullable = false)
     private String user_email;
 
-    @Column(nullable = false)
-    private String user_group;
+    @Column
+    private int user_group;
 
-    @Column(nullable = false)
+    @Column
     private byte[] user_pro_img;
 
     @Column(nullable = false)
+    private boolean user_sex;
+
+    @Column
     private int age;
 
-    private String address;
-
     @Builder
-    public User(String name, int age, String address) {
-        this.name = name;
-        this.age = age;
-        this.address = address;
+    public User(String user_id, String user_pw, String user_nick, boolean user_com,
+                String user_email, int user_group, byte[] user_pro_img, boolean user_sex, int age) {
+        this.user_id = user_id;
+        this.user_pw = user_pw;
+        this.user_nick = user_nick;
+        this.user_com = user_com;
+        this.user_email = user_email;
+        this.user_group = user_group; // 설문조사 후 업데이트로 넣기
+        this.user_pro_img = user_pro_img; // 회원정보수정 할때 업데이트로 넣기
+        this.user_sex = user_sex;
+        this.age = age; // 설문조사할때 물어볼꺼임
     }
 
-    public void update(String address) {
-        this.address = address;
+    public void update(UserUpdateDto updateDto) {
+        this.user_id = user_id;
+        this.user_pw = user_pw;
+        this.user_nick = user_nick;
+        this.user_com = user_com;
+        this.user_email = user_email;
+        this.user_group = user_group; // 설문조사 후 업데이트로 넣기
+        this.user_pro_img = user_pro_img; // 회원정보수정 할때 업데이트로 넣기
+        this.user_sex = user_sex;
+        this.age = age; // 설문조사할때 물어볼꺼임
     }
 }

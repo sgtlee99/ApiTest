@@ -10,25 +10,25 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User findById(Long id) {
-        return userRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+    public User findById(Long user_num) {
+        return userRepository.findById(user_num).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
     }
 
     @Transactional
     public Long save(User user) {
-        return userRepository.save(user).getId();
+        return userRepository.save(user).getUser_num();
     }
 
     @Transactional
-    public Long update(Long id, String address) {
-        User user = findById(id);
-        user.update(address);
-        return id;
+    public Long update(Long user_num, UserUpdateDto updateDto) {
+        User user = findById(user_num);
+        user.update(updateDto);
+        return user_num;
     }
 
     @Transactional
-    public void delete(Long id) {
-        User user = findById(id);
+    public void delete(Long user_num) {
+        User user = findById(user_num);
         userRepository.delete(user);
     }
 }

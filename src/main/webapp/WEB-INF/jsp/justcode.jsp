@@ -112,13 +112,17 @@ RESTful : REST API 제공하는 웹서비스 시스템을 지칭 , "A 서비스 
         GET : 조회 <input type="button" value="testGetBtn" id="testGetBtn"><input type="text" id="pid"><br><br>
         POST :생성 <input type="button" value="testCreateBtn" id="testCreateBtn"><br>
         <form id="createProductForm">
-            상품명 <input type="text" name="name" size="5"> 제조사 <input type="text" name="maker" size="5"> 가격 <input type="number" name="price">
+            상품명 <input type="text" name="name" size="5">
+            제조사 <input type="text" name="maker" size="5">
+            가격 <input type="number" name="price">
         </form>
         <br><br>
         PUT : 수정 <input type="button" value="testPutBtn" id="testPutBtn"><br>
         <form id="updateProductForm">
             상품번호 <input type="text" name="id" size="3" id="updateId">
-            상품명 <input type="text" name="name" size="5"> 제조사 <input type="text" name="maker" size="5"> 가격 <input type="number" name="price">
+            상품명 <input type="text" name="name" size="5">
+            제조사 <input type="text" name="maker" size="5">
+            가격 <input type="number" name="price">
         </form>
         <br>
         DELETE : 삭제 <input type="button" value="testDeleteBtn" id="testDeleteBtn">
