@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Controller
 public class Demo1Controller {
-
+/*
 
 
     @RequestMapping("/") //테스트 페이지
@@ -71,7 +71,9 @@ public class Demo1Controller {
     public String findpwjsp() {
     	return "findpw";
     }
-    
+
+
+ */
 }
 
 
