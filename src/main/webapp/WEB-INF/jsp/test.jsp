@@ -61,7 +61,7 @@
     </script>
 </head>
 <body>
-    스프링부트 rest api 테스트
+    스프링부트 rest api 테스트123
     <ul>
        	<li>
        	GET : 조회 <input type="button" value="testGetBtn" id="testGetBtn" onclick='getTest()'><input type="text" id="id"><br>
