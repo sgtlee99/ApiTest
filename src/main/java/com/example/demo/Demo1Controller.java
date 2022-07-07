@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 @Controller
 public class Demo1Controller {
 
-
-
     @RequestMapping("/test") //테스트 페이지
     public String welcome() {
         return "test";
