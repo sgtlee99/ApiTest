@@ -19,4 +19,5 @@ public class UserUpdateDto {
     private boolean user_sex;
     private int age;
 
+
 }
