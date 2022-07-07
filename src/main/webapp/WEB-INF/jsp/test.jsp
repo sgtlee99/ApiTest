@@ -10,7 +10,7 @@
     <script>
         $.ajaxSetup({
             dataType : "json",
-            contentType: "application/json",
+            contentType: 'application/json; charset=utf-8',
 			success:function(result){
 				alert(result);
 			},
@@ -19,15 +19,24 @@
             }
 		});//ajaxSetup
         function postTest() { //create
-            alert('post');
+
+               const data = {
+                    name: $('#name').val(),
+                    age: $('#age').val(),
+                    address: $('#address').val(),
+                };
+            alert($('#name').val());
             $.ajax({
                 type: "POST",
                 url: "/user",
-                data:$("#createUserForm").serializeArray()
+                data:JSON.stringify(data)
             }).done(function(){ // done - success 와 동일
-                $("#createUserForm")[0].reset();
                 alert('성공');
-            });//ajax
+            }).fail(function (error) {
+                          alert(JSON.stringify(error));
+                      });
+
+            ;//ajax
         }
         function getTest() {
             alert('get');
@@ -58,7 +67,7 @@
        	GET : 조회 <input type="button" value="testGetBtn" id="testGetBtn" onclick='getTest()'><input type="text" id="id"><br>
     	POST :생성 <input type="button" value="testCreateBtn" id="testCreateBtn" onclick='postTest()'>
     	<form id="createUserForm">
-    		이름 <input type="text" name="name" size="5"> 나이 <input type="number" name="age" size="5"> 주소 <input type="text" name="address">
+    		이름 <input type="text" id="name" size="5"> 나이 <input type="number" id="age" size="5"> 주소 <input type="text" id="address">
     	</form>
     	DELETE : 삭제 <input type="button" value="testDeleteBtn" id="testDeleteBtn" onclick='deleteTest()'>
     	<input type="text" id="deleteId">

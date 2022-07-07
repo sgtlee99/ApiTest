@@ -11,6 +11,9 @@ public class UserController {
 
     @PostMapping("/user") // 생성
     public Long create(@RequestBody User user) {
+        System.out.println("user" + user.getName());
+        System.out.println("user" + user.getId());
+        System.out.println("user" + user.getAddress());
         return userService.save(user);
     }
 
