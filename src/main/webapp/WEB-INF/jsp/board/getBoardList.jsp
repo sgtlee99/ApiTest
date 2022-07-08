@@ -46,7 +46,7 @@
       </tr>
     </c:forEach>
   </table>
-  <a href="write.jsp">새글 등록</a>
+  <a href="board/write">새글 등록</a>
 </div>
 </body>
 </html>

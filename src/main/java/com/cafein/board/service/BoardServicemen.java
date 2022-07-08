@@ -26,15 +26,6 @@ public class BoardServicemen implements BoardService{
      * 글쓰기 처리
      * @param board
      */
-    @Override
-    public void insertBoard(Board board) {
-
-    }
-
-    @Override
-    public Board getBoard(Board board) {
-        return null;
-    }
 
     @Override
     public void updateBoard(Board board) {
@@ -45,4 +36,22 @@ public class BoardServicemen implements BoardService{
     public void deleteBoard(Board board) {
 
     }
+
+    @Override
+    public void insertBoard(Board board) {
+        // jpa 사용시 별도 쿼리 작성 필요없이..
+        // 아래 한줄 추가로 DB에 데이터가 저장되었다.
+        boardRepository.save(board);
+    }
+    @Override
+    public Board getBoard(Board board) {
+
+        // 조회수 처리
+        Board findBoard = boardRepository.findById(board.getSeq()).get();
+        findBoard.setCnt(findBoard.getCnt()+1);
+        boardRepository.save(findBoard);
+
+        return findBoard;
+    }
+
 }
