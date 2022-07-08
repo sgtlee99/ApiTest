@@ -1,19 +1,18 @@
 package com.cafein.board.service;
 
 
-import com.cafein.board.dto.BoardDto;
-import com.cafein.board.repository.BoardRepository;
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.cafein.board.Board;
 
-@AllArgsConstructor
-@Service
-public class BoardService {
-    private BoardRepository boardRepository;
+import java.util.List;
 
-    @Transactional
-    public Long savePost(BoardDto boardDto) {
-        return boardRepository.save(boardDto.toEntity()).getId();
-    }
+public interface BoardService {
+    List<Board> getBoardList(Board board);
+
+    void insertBoard(Board board);
+
+    Board getBoard(Board board);
+
+    void updateBoard(Board board);
+
+    void deleteBoard(Board board);
 }
