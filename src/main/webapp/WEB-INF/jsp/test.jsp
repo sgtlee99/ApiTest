@@ -36,15 +36,15 @@
             });
         }
         function putTest() { // 수정 //null체크
-               const data = {
-                   user_pw : $('#user_pw').val(),
-                   user_nick : $('#user_nick').val(),
-                   user_email : $('#user_email').val(),
-                   user_group : null
-                   user_pro_img : null,
-                   age : null,
+                const data = {
+                    user_pw : $('#user_pw').val(),
+                    user_nick : $('#user_nick').val(),
+                    user_email : $('#user_email').val(),
+                    user_group; // null넣는법 찾기
+                    user_pro_img;
+                    age;
                 };
-            alert(user_nick);
+            alert(data.age);
             $.ajax({
                 type: "PUT",
                 url: "/user/{user_num}/update",
