@@ -40,7 +40,7 @@ public class BoardController {
     public String getBoardList(Model model, Board board) {
         List<Board> boardList = boardService.getBoardList(board);
         model.addAttribute("boardlist", boardList);
-        return "getBoardList";
+        return "/board/getBoardList";
     }
 
 
@@ -48,9 +48,9 @@ public class BoardController {
      * 글쓰기 화면
      * @return
      */
-    @RequestMapping("/wirteView")
+    @RequestMapping("/writeView")
     public String insertBoardView() {
-        return "write";
+        return "/board/write";
     }
 
     /**
@@ -69,5 +69,17 @@ public class BoardController {
     public String getBoard(Board board, Model model) {
         model.addAttribute("board", boardService.getBoard((board)));
         return "getBoard";
+    }
+
+    @RequestMapping("/updateBoard")
+    public String updateBoard(Board board) {
+        boardService.updateBoard(board);
+        return "forward:getBoardList";
+    }
+
+    @RequestMapping("/deleteBoard")
+    public String deleteBoard(Board board) {
+        boardService.deleteBoard(board);
+        return "forward:getBoardList";
     }
 }

@@ -45,10 +45,7 @@
                 <td style="background-color: dodgerblue; color: cornsilk">등록일</td>
                 <td><fmt:formatDate value="${board.createDate}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
             </tr>
-            <tr>
-                <td style="background-color: dodgerblue; color: cornsilk">조회수</td>
-                <td>${board.cnt}</td>
-            </tr>
+
             <tr>
                 <td colspan="2">
                     <div style="text-align: center;">

@@ -21,9 +21,9 @@ public class Board {
 
     private String content;     //내용
 
-    @Column(insertable = false, updatable = false, columnDefinition = "date default sysdate")
+    @Column(insertable = false, updatable = false, columnDefinition = "datetime default now()")
     private Date createDate;    //생성일자
 
-    @Column(insertable = false, columnDefinition = "number default 0")
+    @Column(insertable = false, updatable = false, columnDefinition = "int not null default '0'")
     private Long cnt;           //조회수
 }
