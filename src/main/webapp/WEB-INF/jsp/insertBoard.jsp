@@ -25,7 +25,7 @@
 <div style="text-align: center;">
   <h3>글쓰기</h3>
   <hr>
-  <form action="write" method="post">
+  <form action="insertBoard" method="post">
     <table style="width: 700px; margin: auto">
       <tr>
         <td width="70" style="background-color: dodgerblue; color: cornsilk">제목</td>
@@ -40,8 +40,10 @@
         <td><textarea name="content" cols="40" rows="10"></textarea></td>
       </tr>
       <tr>
-        <td colspan="2" align="center">
-          <input type="submit" value="등록"/>
+        <td colspan="2">
+          <div style="text-align: center;">
+            <input type="submit" value="등록"/>
+          </div>
         </td>
       </tr>
     </table>

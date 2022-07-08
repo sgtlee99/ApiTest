@@ -12,17 +12,31 @@ public class BoardServicemen implements BoardService{
     @Autowired
     private BoardRepository boardRepository;
 
+    /**
+     * 글목록 조회
+     * @param board
+     * @return
+     */
     @Override
     public List<Board> getBoardList(Board board) {
         return (List<Board>) boardRepository.findAll();
     }
 
+    /**
+     * 글쓰기 처리
+     * @param board
+     */
     @Override
     public void insertBoard(Board board) {
-        // jpa 사용시 별도 쿼리 작성 필요없이..
-        // 아래 한줄 추가로 DB에 데이터가 저장되었다.
         boardRepository.save(board);
+
     }
+
+    /**
+     * 상세글 조회
+     * @param board
+     * @return
+     */
     @Override
     public Board getBoard(Board board) {
 
@@ -34,6 +48,10 @@ public class BoardServicemen implements BoardService{
         return findBoard;
     }
 
+    /**
+     * 글 수정
+     * @param board
+     */
     @Override
     public void updateBoard(Board board) {
         // 수정 대상 글을 가져온다.
@@ -46,6 +64,11 @@ public class BoardServicemen implements BoardService{
         // DB에 저장
         boardRepository.save(findBoard);
     }
+
+    /**
+     * 글 삭제 처리
+     * @param board
+     */
     @Override
     public void deleteBoard(Board board) {
         boardRepository.deleteById(board.getSeq());

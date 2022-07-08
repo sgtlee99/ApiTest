@@ -45,7 +45,10 @@
                 <td style="background-color: dodgerblue; color: cornsilk">등록일</td>
                 <td><fmt:formatDate value="${board.createDate}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
             </tr>
-
+            <tr>
+                <td style="background-color: dodgerblue; color: cornsilk">조회수</td>
+                <td>${board.cnt}</td>
+            </tr>
             <tr>
                 <td colspan="2">
                     <div style="text-align: center;">
@@ -56,9 +59,9 @@
         </table>
     </form>
     <hr>
-    <a href="/board/write">글등록</a>
+    <a href="insertBoardView">글등록</a>
     <a href="deleteBoard?seq=${board.seq}">글삭제</a>
-    <a href="/board/getBoardList">글목록</a>
+    <a href="getBoardList">글목록</a>
 </div>
 </body>
 </html>

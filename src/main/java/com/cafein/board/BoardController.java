@@ -13,9 +13,15 @@ import java.util.*;
 
 @Controller
 public class BoardController {
+    @Autowired
+    private BoardService boardService;
 
-
-
+    /**
+     * 게시판 목록 테스트용 샘플
+     *
+     * @param model
+     * @return
+     */
     @RequestMapping("/testBoardList")
     public String testBoardList(Model model) {
         List<Board> boardList = new ArrayList<Board>();
@@ -34,27 +40,35 @@ public class BoardController {
         model.addAttribute("boardList", boardList);
         return "testBoardList"; // jsp 파일 이름
     }
-    @Autowired
-    private BoardService boardService;
+
+    /**
+     * 게시판 목록
+     *
+     * @param model
+     * @param board
+     * @return
+     */
     @RequestMapping("/getBoardList")
     public String getBoardList(Model model, Board board) {
         List<Board> boardList = boardService.getBoardList(board);
-        model.addAttribute("boardlist", boardList);
-        return "/board/getBoardList";
-    }
+        model.addAttribute("boardList", boardList);
+        return "getBoardList";
 
+    }
 
     /**
      * 글쓰기 화면
+     *
      * @return
      */
-    @RequestMapping("/writeView")
+    @RequestMapping("/insertBoardView")
     public String insertBoardView() {
-        return "/board/write";
+        return "insertBoard";
     }
 
     /**
      * 글쓰기 처리
+     *
      * @param board
      * @return
      */
@@ -64,22 +78,40 @@ public class BoardController {
         return "redirect:getBoardList";
     }
 
-
+    /**
+     * 상세 글 화면/처리
+     *
+     * @param board
+     * @param model
+     * @return
+     */
     @RequestMapping("/getBoard")
     public String getBoard(Board board, Model model) {
         model.addAttribute("board", boardService.getBoard((board)));
         return "getBoard";
     }
 
+    /**
+     * 글 수정 처리 후 목록으로 이동
+     *
+     * @param board
+     * @return
+     */
     @RequestMapping("/updateBoard")
     public String updateBoard(Board board) {
         boardService.updateBoard(board);
         return "forward:getBoardList";
     }
 
+    /**
+     * 글 삭제 처리 후 목록으로 이동
+     * @param board
+     * @return
+     */
     @RequestMapping("/deleteBoard")
     public String deleteBoard(Board board) {
         boardService.deleteBoard(board);
         return "forward:getBoardList";
     }
+
 }
