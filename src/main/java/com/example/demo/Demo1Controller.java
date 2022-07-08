@@ -36,7 +36,7 @@ public class Demo1Controller {
     }
     
     @RequestMapping("/아이디찾기")
-    public String findid() {
+    public String findId() {
         return "아이디찾기";
     }
     
@@ -48,6 +48,11 @@ public class Demo1Controller {
     @RequestMapping("/설문조사후그룹")
     public String group() {
         return "설문조사후그룹";
+    }
+
+    @RequestMapping("/카페글쓰기")
+    public String cafeInfo() {
+        return "카페글쓰기";
     }
     
     @RequestMapping("/loginPro")

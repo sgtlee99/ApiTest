@@ -1,5 +1,6 @@
 package com.cafein.login;
 
+import com.dto.UserUpdateDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -33,16 +34,16 @@ public class User {
     private String user_email;
 
     @Column
-    private int user_group;
+    private Integer user_group;
 
-    @Column
+    @Column(columnDefinition = "longblob default 'EMPTY'")
     private byte[] user_pro_img;
 
     @Column(nullable = false)
     private boolean user_sex;
 
     @Column
-    private int age;
+    private Integer age;
 
     @Builder
     public User(String user_id, String user_pw, String user_nick, boolean user_com,

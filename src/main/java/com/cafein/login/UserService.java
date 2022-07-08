@@ -1,11 +1,15 @@
 package com.cafein.login;
 
+import com.dto.UserLoginRequestDto;
+import com.dto.UserRegisterRequestDto;
+import com.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
+@Transactional
 public class UserService {
 
     private final UserRepository userRepository;
@@ -30,5 +34,33 @@ public class UserService {
     public void delete(Long user_num) {
         User user = findById(user_num);
         userRepository.delete(user);
+    }
+
+    public Long login(UserLoginRequestDto requestDto) {
+
+        User user = userRepository.findByUserId(requestDto.getId())
+                .orElseThrow(() -> new IllegalCallerException("테이블에 유저가 없습니다"));
+        if (user.getUser_pw().equals(requestDto.getPassword())) {
+            return user.getUser_num();
+        } else {
+            throw new IllegalCallerException("패스워드불일치");
+        }
+    }
+
+  /*  public void login2(UserSaveRequestDto requestDto) { // void
+
+        User user = userRepository.findByUserId(requestDto.getId())
+                .orElseThrow(() -> new IllegalCallerException("테이블에 유저가 없습니다"));
+        if (!user.getUser_pw().equals(requestDto.getPassword())) {
+            throw new IllegalCallerException("패스워드불일치");
+        } else {
+
+        }
+    }*/
+
+    public Long register(UserRegisterRequestDto requestDto) {
+        User user = requestDto.toEntity();
+        User save = userRepository.save(user);
+        return save.getUser_num();
     }
 }

@@ -1,5 +1,6 @@
 package com.cafein.login;
 
+import com.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
