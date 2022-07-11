@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Getter //Lombok의 Getter를 이용해 Getter 메소드를 생성하고 @Builder 를 이용해서 객체를 생성할 수 있게 처리한다
 @NoArgsConstructor //@Builder를 이용하기 위해 @AllArgsConstructor 와 @NoArgsConstructor 를 같이 처리해야 컴파일 에러가 발생하지 않음
 @AllArgsConstructor
+@Builder
 public class User {
 
     @Id
@@ -28,7 +29,8 @@ public class User {
     private String user_nick;
 
     @Column(nullable = false)
-    private boolean user_com; //사용자구분
+    private boolean user_com;
+    //사용자구분
 
     @Column(nullable = false)
     private String user_email;
@@ -39,35 +41,18 @@ public class User {
     @Column(columnDefinition = "longblob default 'EMPTY'")
     private byte[] user_pro_img;
 
-    @Column(nullable = false)
-    private boolean user_sex;
 
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
     @Column
     private Integer age;
 
-    @Builder
-    public User(String user_id, String user_pw, String user_nick, boolean user_com,
-                String user_email, int user_group, byte[] user_pro_img, boolean user_sex, int age) {
-        this.user_id = user_id;
-        this.user_pw = user_pw;
-        this.user_nick = user_nick;
-        this.user_com = user_com;
-        this.user_email = user_email;
-        this.user_group = user_group; // 설문조사 후 업데이트로 넣기
-        this.user_pro_img = user_pro_img; // 회원정보수정 할때 업데이트로 넣기
-        this.user_sex = user_sex;
-        this.age = age; // 설문조사할때 물어볼꺼임
-    }
-
     public void update(UserUpdateDto updateDto) {
-        this.user_id = user_id;
-        this.user_pw = user_pw;
-        this.user_nick = user_nick;
-        this.user_com = user_com;
-        this.user_email = user_email;
-        this.user_group = user_group; // 설문조사 후 업데이트로 넣기
-        this.user_pro_img = user_pro_img; // 회원정보수정 할때 업데이트로 넣기
-        this.user_sex = user_sex;
-        this.age = age; // 설문조사할때 물어볼꺼임
+        this.user_pw = updateDto.getUser_pw();
+        this.user_nick = updateDto.getUser_nick();
+        this.user_email = updateDto.getUser_email();
+        this.user_group = updateDto.getUser_group(); // 설문조사 후 업데이트로 넣기
+        this.user_pro_img = updateDto.getUser_pro_img(); // 회원정보수정 할때 업데이트로 넣기
+        this.age = updateDto.getAge(); // 설문조사할때 물어볼꺼임
     }
 }

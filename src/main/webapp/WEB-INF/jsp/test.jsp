@@ -36,21 +36,22 @@
             });
         }
         function putTest() { // 수정 //null체크
-                const data = {
-                    user_pw : $('#user_pw').val(),
-                    user_nick : $('#user_nick').val(),
-                    user_email : $('#user_email').val(),
-                    user_group; // null넣는법 찾기
-                    user_pro_img;
-                    age;
-                };
-            alert(data.age);
+
+            const data = {
+                user_pw : $('#user_pw').val(),
+                user_nick : $('#user_nick').val(),
+                user_email : $('#user_email').val(),
+                user_group : null,
+                user_pro_img : null,
+                age : null,
+            };
             $.ajax({
                 type: "PUT",
-                url: "/user/{user_num}/update",
+                url: "/user/"+$("#user_num2").val()+"/update",
                 data:JSON.stringify(data)
             }).done(function(){ // done - success 와 동일
                 alert('성공');
+                alert(data.user_pw+" "+data.user_nick+" "+data.user_email+" "+data.age);
             }).fail(function (error) {
                 alert(JSON.stringify(error));
             });
@@ -92,8 +93,8 @@
         이름 <input type="text" id="name" size="5"> 나이 <input type="number" id="age" size="5"> 주소 <input type="text" id="address"><br>
 
         PUT : 수정 <input type="button" value="testPutBtn" id="testPutBtn" onclick='putTest()'>
-        user_num <input type="text" name="user_num" size="2" id="user_num">
-        user_pw <input type="text" name="user_pw" size="3" id="updateId">
+        user_num <input type="text" name="user_num" size="2" id="user_num2">
+        user_pw <input type="text" name="user_pw" size="3" id="user_pw">
         user_nick <input type="text" name="user_nick" size="5" id="user_nick">
         user_email <input type="text" name="user_email" size="10" id="user_email">
 

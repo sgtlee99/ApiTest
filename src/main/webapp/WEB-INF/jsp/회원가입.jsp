@@ -80,7 +80,7 @@
                          user_nick: $('#user_nick').val(),
                          user_email: $('#user_email').val(),
                          user_com: $('#user_com').val(),
-                         user_sex: $('#user_sex').val(),
+                         sex: $('#user_sex').val(),
                      };
                      alert($('#user_id').val());
                      $.ajax({
@@ -151,13 +151,13 @@
 		    </div>
 		    <h5 style="text-align: center; margin-top: 4%;">성별</h5>
 		    <div class="form-check" style="float: left;"> <!-- 남자 -->
-			    <input class="form-check-input" type="checkbox" value="true" id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
+			    <input class="form-check-input" type="checkbox" value="MALE" id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
 			    <label class="form-check-label" for="user_sex">
 				    남자
 			    </label>
 		    </div>
 		    <div class="form-check" style="margin-left: 80%;"> <!-- 여자 -->
-			    <input class="form-check-input" type="checkbox" value="false id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
+			    <input class="form-check-input" type="checkbox" value="FEMALE id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
 			    <label class="form-check-label" for="user_sex">
 				    여자
 			    </label>

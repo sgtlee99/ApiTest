@@ -25,7 +25,8 @@ public class UserService {
 
     @Transactional
     public Long update(Long user_num, UserUpdateDto updateDto) {
-        User user = findById(user_num);
+        User user = userRepository.findById(user_num)
+                                .orElseThrow(() -> new IllegalCallerException("없음"));
         user.update(updateDto);
         return user_num;
     }

@@ -1,6 +1,7 @@
 package com.dto;
 
 
+import com.cafein.login.Sex;
 import com.cafein.login.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,7 +32,7 @@ public class UserRegisterRequestDto {
 
     private byte[] user_pro_img;
 
-    private boolean user_sex;
+    private Sex sex;
 
     private Integer age;
 
@@ -44,7 +45,7 @@ public class UserRegisterRequestDto {
                    .user_email(this.user_email)
                    .user_group(this.user_group)
                    .user_pro_img(this.user_pro_img)
-                   .user_sex(this.user_sex)
+                   .sex(this.sex)
                    .age(this.age)
                    .build();
     }

@@ -16,7 +16,6 @@ public class UserApiController {
     public ResponseEntity<?> androidResponse(@RequestBody UserLoginRequestDto dto) {
         System.out.println("Connection from Android");
         System.out.println("id: " + dto.getId() + ", pw: " + dto.getPassword());
-
         return ResponseEntity.ok().body(dto.getId());
     }
     @PostMapping(value="/android/login")

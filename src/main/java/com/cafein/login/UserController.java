@@ -1,5 +1,6 @@
 package com.cafein.login;
 
+import com.dto.UserRegisterRequestDto;
 import com.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,11 +12,11 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping("/user") // 생성
-    public Long create(@RequestBody User user) {
+    public Long create(@RequestBody UserRegisterRequestDto userRegisterRequestDto) {
         //System.out.println("user" + user.getName());
         //System.out.println("user" + user.getId());
         //System.out.println("user" + user.getAddress());
-        return userService.save(user);
+        return userService.register(userRegisterRequestDto);
     }
 
     @GetMapping("/user/{user_num}") // 조회
@@ -25,6 +26,7 @@ public class UserController {
 
     @PutMapping("/user/{user_num}/update") //수정
     public Long update(@PathVariable Long user_num, @RequestBody UserUpdateDto updateDto) {
+        System.out.println("update api");
         return userService.update(user_num, updateDto);
     }
 

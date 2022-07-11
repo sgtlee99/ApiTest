@@ -1,11 +1,11 @@
 package com.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import com.cafein.login.Sex;
+import lombok.*;
 
 @Getter
 @Builder
+@NoArgsConstructor
 @AllArgsConstructor
 public class UserUpdateDto {
 
@@ -15,5 +15,6 @@ public class UserUpdateDto {
     private int user_group;
     private byte[] user_pro_img;
     private int age;
+    private Sex sex;
 
 }
