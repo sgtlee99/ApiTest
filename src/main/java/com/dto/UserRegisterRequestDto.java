@@ -3,15 +3,11 @@ package com.dto;
 
 import com.cafein.login.Sex;
 import com.cafein.login.User;
+import com.cafein.login.Com;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,32 +15,23 @@ import javax.persistence.Id;
 @Setter
 public class UserRegisterRequestDto {
 
-    private String user_id;
-    private String user_pw;
-
-    private String user_nick;
-
-    private boolean user_com; //사용자구분(일반사용자/사업자)
-
-    private String user_email;
-
-    private Integer user_group;
-
-    private byte[] user_pro_img;
-
+    private String id;
+    private String pw;
+    private String nick;
+    private Com com; //사용자구분(일반사용자/사업자)
+    private String email;
+    private Integer groups;
     private Sex sex;
-
     private Integer age;
 
     public User toEntity() {
         return User.builder()
-                   .user_id(this.user_id)
-                   .user_pw(this.user_pw)
-                   .user_nick(this.user_nick)
-                   .user_com(this.user_com)
-                   .user_email(this.user_email)
-                   .user_group(this.user_group)
-                   .user_pro_img(this.user_pro_img)
+                   .id(this.id)
+                   .pw(this.pw)
+                   .nick(this.nick)
+                   .com(this.com)
+                   .email(this.email)
+                   .groups(this.groups)
                    .sex(this.sex)
                    .age(this.age)
                    .build();

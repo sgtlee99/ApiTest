@@ -138,13 +138,13 @@
 		    </div>
 		    <h5 style="text-align: center; margin-top: 4%;">사용자구별</h5>
 		    <div class="form-check" style="float: left;"> <!-- 일반사용자 -->
-			    <input class="form-check-input" type="checkbox" value="true" id="user_com" name="user_com" onclick="doOpenCheck1(this);">
+			    <input class="form-check-input" type="checkbox" value="GUEST" id="user_com" name="user_com" onclick="doOpenCheck1(this);">
 			    <label class="form-check-label" for="user_com">
 				    일반 사용자
 			    </label>
 		    </div>
 		    <div class="form-check" style="margin-left: 80%;"> <!-- 사업자 -->
-			    <input class="form-check-input" type="checkbox" value="false" id="user_com" name="user_com" onclick="doOpenCheck1(this);">
+			    <input class="form-check-input" type="checkbox" value="MANAGER" id="user_com" name="user_com" onclick="doOpenCheck1(this);">
 			    <label class="form-check-label" for="user_com">
 				    사업자
 			    </label>

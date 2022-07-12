@@ -1,5 +1,6 @@
-package com.cafein.login;
+package com.controller;
 
+import com.cafein.login.UserService;
 import com.dto.UserLoginRequestDto;
 import com.dto.UserRegisterRequestDto;
 import lombok.RequiredArgsConstructor;
@@ -15,17 +16,19 @@ public class UserApiController {
     @PostMapping(value="/android")
     public ResponseEntity<?> androidResponse(@RequestBody UserLoginRequestDto dto) {
         System.out.println("Connection from Android");
-        System.out.println("id: " + dto.getId() + ", pw: " + dto.getPassword());
+        System.out.println("id: " + dto.getId() + ", pw: " + dto.getPw());
         return ResponseEntity.ok().body(dto.getId());
     }
     @PostMapping(value="/android/login")
     public ResponseEntity<?> androidLogin(@RequestBody UserLoginRequestDto dto) {
         userService.login(dto);
-        return ResponseEntity.ok().body("success!");
+        return ResponseEntity.ok().body("login success!");
         //return ResponseEntity.ok().body(userService.login(dto));
     }
     @PostMapping(value="/android/register")
     public ResponseEntity<?> androidRegister(@RequestBody UserRegisterRequestDto dto) {
-        return ResponseEntity.ok().body(userService.register(dto));
+        userService.register(dto);
+        System.out.println("runnnn");
+        return ResponseEntity.ok().body("register success!");
     }
 }

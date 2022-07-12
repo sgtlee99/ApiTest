@@ -17,30 +17,29 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
-    private Long user_num;
+    private Long num;
 
     @Column(nullable = false) //DB Column을 명시
-    private String user_id;
+    private String id;
 
     @Column(nullable = false)
-    private String user_pw;
+    private String pw;
 
     @Column(nullable = false)
-    private String user_nick;
+    private String nick;
 
-    @Column(nullable = false)
-    private boolean user_com;
+    @Enumerated(EnumType.STRING)
+    private Com com;
     //사용자구분
 
     @Column(nullable = false)
-    private String user_email;
+    private String email;
 
     @Column
-    private Integer user_group;
+    private Integer groups;
 
     @Column(columnDefinition = "longblob default 'EMPTY'")
-    private byte[] user_pro_img;
-
+    private byte[] proImg;
 
     @Enumerated(EnumType.STRING)
     private Sex sex;
@@ -48,11 +47,11 @@ public class User {
     private Integer age;
 
     public void update(UserUpdateDto updateDto) {
-        this.user_pw = updateDto.getUser_pw();
-        this.user_nick = updateDto.getUser_nick();
-        this.user_email = updateDto.getUser_email();
-        this.user_group = updateDto.getUser_group(); // 설문조사 후 업데이트로 넣기
-        this.user_pro_img = updateDto.getUser_pro_img(); // 회원정보수정 할때 업데이트로 넣기
+        this.pw = updateDto.getPw();
+        this.nick = updateDto.getNick();
+        this.email = updateDto.getEmail();
+        this.groups = updateDto.getGroups(); // 설문조사 후 업데이트로 넣기
+        this.proImg = updateDto.getProImg(); // 회원정보수정 할때 업데이트로 넣기
         this.age = updateDto.getAge(); // 설문조사할때 물어볼꺼임
     }
 }

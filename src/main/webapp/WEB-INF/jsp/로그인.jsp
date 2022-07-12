@@ -25,8 +25,19 @@
 			text-decoration: none;
 		}
 	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
-		function chechValue() {
+        $.ajaxSetup({
+            dataType : "json",
+            contentType: 'application/json; charset=utf-8',
+			success:function(result){
+				alert(result);
+			},
+			error: function (jqXHR) {
+                alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+            }
+		});//ajaxSetup
+		function checkValue() {
 			if(!document.userInfo.user_id.value) {
 				alert("아이디를 입력하세요.");
 				return false;
@@ -36,23 +47,46 @@
 				return false;
 			}
 		}
+        $(document).ready(function(){
+            $("#userInfo").submit(function(event) {
+                if (checkValue() == false) {
+                    alert('입력해');
+                    return false;
+                } else {
+                    event.preventDefault();
+                    const data = {
+                        user_id: $('#user_id').val(),
+                        user_pw: $('#user_pw').val(),
+                    };
+                    $.ajax({
+                        type: "POST",
+                        url: "/user/login",
+                        data:JSON.stringify(data)
+                    }).done(function(){ // done - success 와 동일
+                        alert('성공');
+                    }).fail(function (error) {
+                        alert(JSON.stringify(error));
+                    });
+                }
+            });
+        });
 	</script>
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 	<h2 style="text-align: center; margin-top: 8%; font-family:BernhardFashion BT; font-weight: bold;;">Cafe_in</h2>
 	
-	<form method="post" action="loginPro" name="userInfo">
+	<form name="userInfo" id="userInfo">
 	
 	<div class="container">
 		<img src="resources/img/coffee.png" style="margin-top: 5%" alt="이미지">
 		<div class="md-3">
-			<label for="exampleFormControlInput1" class="form-label"></label>
-			<input type="text" class="form-control" id="exampleFormControlInput1" name="user_id" placeholder="아이디">
+			<label for="user_id" class="form-label"></label>
+			<input type="text" class="form-control" id="user_id" name="user_id" placeholder="아이디">
 		</div>
 		<div class="mb-3">
-			<label for="exampleFormControlInput1" class="form-label"></label>
-			<input type="password" class="form-control" id="exampleFormControlInput1" name="user_pw" placeholder="비밀번호">
+			<label for="user_pw" class="form-label"></label>
+			<input type="password" class="form-control" id="user_pw" name="user_pw" placeholder="비밀번호">
 		</div>
 		<div class="col-auto">
 			<button type="submit" class="btn btn-primary" style="width: 99%; color: white; background-color: red; border: none;">

@@ -14,26 +14,33 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User findById(Long user_num) {
-        return userRepository.findById(user_num).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
+    public User findById(Long num) {
+        return userRepository.findById(num).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
     }
 
     @Transactional
-    public Long save(User user) {
-        return userRepository.save(user).getUser_num();
+    public Long save(User user) { //저장
+        return userRepository.save(user).getNum();
     }
 
     @Transactional
-    public Long update(Long user_num, UserUpdateDto updateDto) {
-        User user = userRepository.findById(user_num)
+    public Long update(Long num, UserUpdateDto updateDto) { //수정
+        User user = userRepository.findById(num)
                                 .orElseThrow(() -> new IllegalCallerException("없음"));
         user.update(updateDto);
-        return user_num;
+        return num;
     }
 
+    /*@Transactional
+    public Long read(Long user_num, UserReadRequestDto userReadRequestDto) { //읽기
+        User user = userRepository.findById(user_num)
+                                  .orElseThrow(() -> new IllegalCallerException("없음"));
+        return user_num;
+    }*/
+
     @Transactional
-    public void delete(Long user_num) {
-        User user = findById(user_num);
+    public void delete(Long num) { //삭제
+        User user = findById(num);
         userRepository.delete(user);
     }
 
@@ -41,8 +48,8 @@ public class UserService {
 
         User user = userRepository.findByUserId(requestDto.getId())
                 .orElseThrow(() -> new IllegalCallerException("테이블에 유저가 없습니다"));
-        if (user.getUser_pw().equals(requestDto.getPassword())) {
-            return user.getUser_num();
+        if (user.getPw().equals(requestDto.getPw())) {
+            return user.getNum();
         } else {
             throw new IllegalCallerException("패스워드불일치");
         }
@@ -62,6 +69,6 @@ public class UserService {
     public Long register(UserRegisterRequestDto requestDto) {
         User user = requestDto.toEntity();
         User save = userRepository.save(user);
-        return save.getUser_num();
+        return save.getNum();
     }
 }
