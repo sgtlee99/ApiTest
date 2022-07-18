@@ -6,13 +6,18 @@ import com.cafein.board.Board;
 import java.util.List;
 
 public interface BoardService {
-    List<Board> getBoardList(Board board);
+    //List<Board> getBoardList(Board board);
 
-    void insertBoard(Board board);
+   // void insertBoard(Board board);
 
     Board getBoard(Board board);
 
     void updateBoard(Board board);
 
     void deleteBoard(Board board);
+
+
+    void cafeinWrite(Board board);
+
+    List<Board> cafeBoard(Board board);
 }

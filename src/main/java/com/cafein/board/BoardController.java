@@ -22,6 +22,8 @@ public class BoardController {
      * @param model
      * @return
      */
+
+    /*
     @RequestMapping("/testBoardList")
     public String testBoardList(Model model) {
         List<Board> boardList = new ArrayList<Board>();
@@ -41,6 +43,8 @@ public class BoardController {
         return "testBoardList"; // jsp 파일 이름
     }
 
+
+     */
     /**
      * 게시판 목록
      *
@@ -48,6 +52,7 @@ public class BoardController {
      * @param board
      * @return
      */
+    /*
     @RequestMapping("/getBoardList")
     public String getBoardList(Model model, Board board) {
         List<Board> boardList = boardService.getBoardList(board);
@@ -55,29 +60,49 @@ public class BoardController {
         return "getBoardList";
 
     }
-
+*/
+    @RequestMapping("/cafe_Board")
+    public String cafeBoard(Model model, Board board) {
+        List<Board> boardList = boardService.cafeBoard(board);
+        model.addAttribute("boardList", boardList);
+        return "cafe_Board";
+    }
     /**
      * 글쓰기 화면
      *
      * @return
      */
+  /*
     @RequestMapping("/insertBoardView")
     public String insertBoardView() {
         return "insertBoard";
     }
-
+   */
+    @RequestMapping("/cafe_writingView")
+    public String cafewrtingView() {
+        return "cafe_writing";
+    }
     /**
      * 글쓰기 처리
      *
      * @param board
      * @return
      */
+
+    @RequestMapping("/cafe_wrting")
+    public String cafewriting(Board board) {
+        boardService.cafeinWrite(board);
+        return "redirect:cafe_Board";
+    }
+    /*
     @RequestMapping("/insertBoard")
     public String insertBoard(Board board) {
         boardService.insertBoard(board);
         return "redirect:getBoardList";
     }
 
+
+     */
     /**
      * 상세 글 화면/처리
      *
@@ -85,10 +110,10 @@ public class BoardController {
      * @param model
      * @return
      */
-    @RequestMapping("/getBoard")
+    @RequestMapping("/cafe_상세")
     public String getBoard(Board board, Model model) {
-        model.addAttribute("board", boardService.getBoard((board)));
-        return "getBoard";
+        model.addAttribute("board", boardService.cafeBoard((board)));
+        return "cafe_상세";
     }
 
     /**
@@ -100,7 +125,7 @@ public class BoardController {
     @RequestMapping("/updateBoard")
     public String updateBoard(Board board) {
         boardService.updateBoard(board);
-        return "forward:getBoardList";
+        return "forward:cafe_Board";
     }
 
     /**
@@ -111,7 +136,14 @@ public class BoardController {
     @RequestMapping("/deleteBoard")
     public String deleteBoard(Board board) {
         boardService.deleteBoard(board);
-        return "forward:getBoardList";
+        return "forward:cafe_Board";
+    }
+
+
+    @RequestMapping("/cafe_writing")
+    public String cafeinWrite(Board board) {
+        boardService.cafeinWrite(board);
+        return "forward:cafe_Board";
     }
 
 }

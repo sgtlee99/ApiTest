@@ -17,6 +17,7 @@ public class BoardServicemen implements BoardService{
      * @param board
      * @return
      */
+   /*
     @Override
     public List<Board> getBoardList(Board board) {
         return (List<Board>) boardRepository.findAll();
@@ -26,12 +27,12 @@ public class BoardServicemen implements BoardService{
      * 글쓰기 처리
      * @param board
      */
+    /*
     @Override
     public void insertBoard(Board board) {
         boardRepository.save(board);
 
     }
-
     /**
      * 상세글 조회
      * @param board
@@ -47,7 +48,6 @@ public class BoardServicemen implements BoardService{
 
         return findBoard;
     }
-
     /**
      * 글 수정
      * @param board
@@ -72,5 +72,17 @@ public class BoardServicemen implements BoardService{
     @Override
     public void deleteBoard(Board board) {
         boardRepository.deleteById(board.getSeq());
+    }
+
+
+    @Override
+    public void cafeinWrite(Board board) {
+        boardRepository.save(board);
+    }
+
+
+    @Override
+    public List<Board> cafeBoard(Board board) {
+        return (List<Board>) boardRepository.findAll();
     }
 }

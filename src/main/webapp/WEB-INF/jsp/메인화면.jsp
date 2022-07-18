@@ -294,7 +294,7 @@
 		<a href="메인화면">
 			<img src="https://user-images.githubusercontent.com/102495801/167056604-ed2c2e9c-426d-455b-84f9-54bb4f82a0c2.png" alt="main_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
 		</a>
-		<a href="카페글쓰기">
+		<a href="cafe_Board">
 			<img src="https://user-images.githubusercontent.com/102495801/167056127-afdaad04-d13b-4a33-a4c0-9c2d8904ead8.png" alt="write_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
 		</a>
 		<a href="마이페이지 사용자">

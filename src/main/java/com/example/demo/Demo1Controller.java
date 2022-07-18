@@ -70,7 +70,10 @@ public class Demo1Controller {
     	return "findpw";
     }
 
-
+    @RequestMapping("/cafe_write")
+    public String cafewri() {
+        return "cafe_write";
+    }
 
 
 }

@@ -11,7 +11,7 @@
     table th {
       border: 1px solid #444444;
       text-align: center;
-      height: 40px;
+      height: 70px;
       background-color: dodgerblue;
       color: cornsilk;
     }
@@ -37,7 +37,7 @@
       </tr>
       <tr>
         <td style="background-color: dodgerblue; color: cornsilk">내용</td>
-        <td><textarea name="content" cols="40" rows="10"></textarea></td>
+        <td><textarea name="content" cols="80" rows="20"></textarea></td>
       </tr>
       <tr>
         <td colspan="2">

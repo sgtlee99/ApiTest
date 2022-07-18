@@ -5,7 +5,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>게시판 목록</title>
+  <title>글 목록</title>
   <style>
     table {
       width: 100%;
