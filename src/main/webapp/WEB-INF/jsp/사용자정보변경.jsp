@@ -11,7 +11,7 @@
 	<style>
 		.container1 {
 			display: inline-block;
-			text-align: center;
+			text-align: left;
 		}
 		.bar {
 			background-color: #D9D9D9;
@@ -62,43 +62,53 @@
 		</a>
 	</div>
 	<div class="container1" style="position: absolute; left: 35%; top: 10%; padding: 1%; width: 33vw; height: ; border: 3px solid #A0A0A0; border-radius: 20px; background-color: #FDF2E9;">
-		<div style="border-bottom: 2px solid black; height: 6vh;">
-			<h2>나의 정보</h2>
+		<div style="border-bottom: 2px solid black; height: 6vh; text-align: center;">
+			<h2>나의 정보변경</h2>
 		</div>
 		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
 			<img src="https://user-images.githubusercontent.com/102495801/167056576-0a2c3920-d8f8-47b2-bdcb-dd4d2a9cd205.png" alt="■" style="float: left; width: 2vw;">
 			<h5 style="margin-left: 1.5%; border-bottom: 1px solid black; float: left;">내 정보</h5>
-			<a href="사용자정보변경" class="btn btn-primary shadow-none" role="button" style="padding: 0.5%; float:right; border-color: #d29e79; color: #d29e79; width:6vw; height:2vw">정보변경</a>
 		</div>
 		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">닉네임 : 홍길동</h5>
+		    <h5 style="display: inline-block; width:12vw;">변경할 비밀번호</h5>
+			<input type="password" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
 		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">이메일 : abc@naver.com</h5>
+		    <h5 style="display: inline-block; width:12vw;">비밀번호 확인</h5>
+			<input type="password" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">나의 그룹 : </h5>
-			<img src="https://user-images.githubusercontent.com/102495801/167052579-3c276158-43f3-464e-aada-491f15b94ccf.jpg" alt="●" style="float: left; margin-left: 1.5%; width: 6%;">
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <h5 style="display: inline-block; width:12vw;">닉네임 변경</h5>
+			<input type="text" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw; text-align: left; margin-left: 8%;">
-			<a href="설문조사" style="font-size: 1.2rem;">설문조사 다시하기</a>
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <h5 style="display: inline-block; width:12vw;">이메일 변경</h5>
+			<input type="email" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<img src="https://user-images.githubusercontent.com/102495801/167052651-8c3ae662-4fbd-4286-9f6f-78df6207c350.png" alt="♥" style="float: left; width: 6%">
-			<h5 style="margin-left: 1.5%; border-bottom: 1px solid black; float: left;">좋아하는 카페</h5>
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <h5 style="display: inline-block; width:12vw;">나이 설정</h5>
+			<input type="text" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">○○카페</h5>
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <h5 style="display: inline-block; width:12vw;">성별 변경</h5>
+
+            <input class="form-check-input" type="checkbox" value="MALE" id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
+			<label class="form-check-label" for="user_sex">
+		        남자
+			</label>
+            <input class="form-check-input" type="checkbox" value="FEMALE id="user_sex" name="user_sex" onclick="doOpenCheck2(this);">
+			<label class="form-check-label" for="user_sex">
+				여자
+			</label>
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">□□카페</h5>
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <h5 style="display: inline-block; width:12vw;">프로필사진 변경</h5>
+			<input type="text" class="form-control" id="" name="" style="width: 15vw; display: inline-block;">
 		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw;">
-			<h5 style="margin-left: 8%; float: left;">△△카페</h5>
-		</div>
-		<div class="container1" style="margin-top: 3%; width: 30.7vw; text-align: left;">
-			<img src="https://user-images.githubusercontent.com/102495801/167052762-91763aff-63c7-4375-aee3-25561e1af81c.png" alt="★" style="float: left; width: 6%;">
-			<a href="나의작성글" style="font-size: 1.2rem; margin-left: 1.5%;">나의 작성글</a>
+        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+		    <button type="submit" class="btn btn-primary shadow-none" style="padding: 0.5%; float:right; border-color: #d29e79; color: #d29e79; width:6vw; height:2vw">
+        	    변경 완료
+            </button>
 		</div>
 	</div>
 </body>

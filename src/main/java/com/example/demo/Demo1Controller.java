@@ -64,6 +64,11 @@ public class Demo1Controller {
     public String guestMyPage() {
         return "사용자마이페이지";
     }
+
+    @RequestMapping("/사용자정보변경")
+    public String guestChangeInfo() {
+        return "사용자정보변경";
+    }
     
     @RequestMapping("/loginPro")
     public String loginProjsp() {
