@@ -14,7 +14,12 @@ public class Demo1Controller {
     public String welcome() {
         return "test";
     }
-    
+
+    @RequestMapping("/")
+    public String defalut() {
+        return "로그인";
+    }
+
     @RequestMapping("/로그인")
     public String login() {
         return "로그인";
@@ -53,6 +58,11 @@ public class Demo1Controller {
     @RequestMapping("/카페글쓰기")
     public String cafeInfo() {
         return "카페글쓰기";
+    }
+
+    @RequestMapping("/사용자마이페이지")
+    public String guestMyPage() {
+        return "사용자마이페이지";
     }
     
     @RequestMapping("/loginPro")

@@ -40,6 +40,22 @@
 			}
 		}
 	}
+    function doOpenCheck5(chk){
+		var obj = document.getElementsByName("eee");
+		for(var i=0; i<obj.length; i++){
+			if(obj[i] != chk){
+				obj[i].checked = false;
+			}
+		}
+	}
+    function doOpenCheck6(chk){
+		var obj = document.getElementsByName("fff");
+		for(var i=0; i<obj.length; i++){
+			if(obj[i] != chk){
+				obj[i].checked = false;
+			}
+		}
+	}
 	</script>
 	<style>
 		.container {
@@ -123,13 +139,13 @@
 		<h5 style="">카페정보를 찾을때 사용하는 sns</h5>
 				<div class="s1">
 			<div class="form-check" style="">
-				<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="eee" onclick="doOpenCheck4(this);">
+				<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="eee" onclick="doOpenCheck5(this);">
 				<label class="form-check-label" for="flexCheckDefault">
 					인스타
 				</label>
 			</div>
 			<div class="form-check" style="">
-				<input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" name="eee" onclick="doOpenCheck4(this);">
+				<input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" name="eee" onclick="doOpenCheck5(this);">
 				<label class="form-check-label" for="flexCheckDefault">
 					블로그
 				</label>
@@ -138,13 +154,13 @@
 		<h5 style="">좋아하는 카페 분위기</h5>
 				<div class="s1">
 			<div class="form-check" style="">
-				<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="fff" onclick="doOpenCheck4(this);">
+				<input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" name="fff" onclick="doOpenCheck6(this);">
 				<label class="form-check-label" for="flexCheckDefault">
 					조용한개인카페
 				</label>
 			</div>
 			<div class="form-check" style="">
-				<input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" name="fff" onclick="doOpenCheck4(this);">
+				<input class="form-check-input" type="checkbox" value="2" id="flexCheckDefault" name="fff" onclick="doOpenCheck6(this);">
 				<label class="form-check-label" for="flexCheckDefault">
 					화려한대형카페
 				</label>

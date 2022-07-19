@@ -3,6 +3,7 @@ package com.controller;
 import com.cafein.login.UserService;
 import com.dto.UserLoginRequestDto;
 import com.dto.UserRegisterRequestDto;
+import com.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,5 +31,12 @@ public class UserApiController {
         userService.register(dto);
         System.out.println("runnnn");
         return ResponseEntity.ok().body("register success!");
+    }
+
+    @PutMapping(value="/android/update")
+    public ResponseEntity<?> androidUpdate(Long num, @RequestBody UserUpdateDto dto) {
+        userService.update(num, dto);
+        System.out.println("runnnn");
+        return ResponseEntity.ok().body("update success!");
     }
 }

@@ -297,7 +297,7 @@
 		<a href="카페글쓰기">
 			<img src="https://user-images.githubusercontent.com/102495801/167056127-afdaad04-d13b-4a33-a4c0-9c2d8904ead8.png" alt="write_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
 		</a>
-		<a href="마이페이지 사용자">
+		<a href="사용자마이페이지">
 			<img src="https://user-images.githubusercontent.com/102495801/167056576-0a2c3920-d8f8-47b2-bdcb-dd4d2a9cd205.png" alt="mypage_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
 		</a>
 	</div>

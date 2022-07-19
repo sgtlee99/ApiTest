@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		.container {
 			float: center;
@@ -25,10 +26,9 @@
 			text-decoration: none;
 		}
 	</style>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<script>
         $.ajaxSetup({
-            dataType : "json",
+            dataType : "text",
             contentType: 'application/json; charset=utf-8',
 			success:function(result){
 				alert(result);
@@ -55,17 +55,18 @@
                 } else {
                     event.preventDefault();
                     const data = {
-                        user_id: $('#user_id').val(),
-                        user_pw: $('#user_pw').val(),
+                        id: $('#user_id').val(),
+                        pw: $('#user_pw').val(),
                     };
                     $.ajax({
                         type: "POST",
                         url: "/user/login",
                         data:JSON.stringify(data)
                     }).done(function(){ // done - success 와 동일
-                        alert('성공');
+                        location.href='메인화면';
                     }).fail(function (error) {
-                        alert(JSON.stringify(error));
+                        //alert(JSON.stringify(error));
+                        alert('아이디 비밀번호 불일치');
                     });
                 }
             });

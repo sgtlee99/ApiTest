@@ -75,20 +75,20 @@
                 } else {
                     event.preventDefault();
                     const data = {
-                         user_id: $('#user_id').val(),
-                         user_pw: $('#user_pw').val(),
-                         user_nick: $('#user_nick').val(),
-                         user_email: $('#user_email').val(),
-                         user_com: $('#user_com').val(),
+                         id: $('#user_id').val(),
+                         pw: $('#user_pw').val(),
+                         nick: $('#user_nick').val(),
+                         email: $('#user_email').val(),
+                         com: $('#user_com').val(),
                          sex: $('#user_sex').val(),
                      };
-                     alert($('#user_id').val());
                      $.ajax({
                          type: "POST",
                          url: "/user",
                          data:JSON.stringify(data)
                      }).done(function(){ // done - success 와 동일
                          alert('성공');
+                         location.href='설문조사';
                      }).fail(function (error) {
                          alert(JSON.stringify(error));
                      });
