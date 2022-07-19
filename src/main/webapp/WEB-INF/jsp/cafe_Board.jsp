@@ -81,6 +81,7 @@
           <img src="" alt="(d)">7
   </div>
   -->
+  <form action="cafe_Board" method="post">
   <div class="container1" style="width: 32.5vw;">
     <table class="table" >
       <thead align="left">
@@ -92,12 +93,16 @@
       <c:forEach var="board" items="${boardList}">
       <tr>
         <td>${board.seq}</td>
-        <td style="text-align: left"><a href="cafe_Board?seq=${board.seq}">${board.title}</a></td>
+        <td style="text-align: left"><a href="getBoard?seq=${board.seq}">${board.title}</a></td>
         <td>${board.writer}</td>
         <td><fmt:formatDate value="${board.createDate}" pattern="yyyy-MM-dd"></fmt:formatDate> </td>
         <td>${board.cnt}</td>
       </tr>
       </c:forEach>
+      </thead>
+    </table>
+  </div>
+  </form>
   <div class="container1" style="width: 32.5vw; margin-top: 2%; font-size: 1.4rem;">
     <a href="cafe_writingView" style="float:right;">글쓰기</a>
   </div>

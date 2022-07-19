@@ -83,6 +83,7 @@
             <button type="submit" class="btn btn-primary" style="color: white; background-color: orange; border: none; width: 4vw; height: 4vh;" onclick="location.href='메인화면'" value="등록">완료</button>
         </div>
     </form>
+
 </div>
 </body>
 </html>
