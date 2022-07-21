@@ -38,12 +38,13 @@
         function putTest() { // 수정 //null체크
 
             const data = {
-                user_pw : $('#user_pw').val(),
-                user_nick : $('#user_nick').val(),
-                user_email : $('#user_email').val(),
-                user_group : null,
-                user_pro_img : null,
+                pw : $('#user_pw').val(),
+                nick : $('#user_nick').val(),
+                email : $('#user_email').val(),
+                group : null,
+                proImg : null,
                 age : null,
+                sex : 'FEMALE',
             };
             $.ajax({
                 type: "PUT",
@@ -51,7 +52,7 @@
                 data:JSON.stringify(data)
             }).done(function(){ // done - success 와 동일
                 alert('성공');
-                alert(data.user_pw+" "+data.user_nick+" "+data.user_email+" "+data.age);
+                alert(data.pw+" "+data.nick+" "+data.email+" "+data.age+" "+data.sex);
             }).fail(function (error) {
                 alert(JSON.stringify(error));
             });
@@ -62,7 +63,7 @@
                 type: "GET",
                 url: "/user/"+$("#user_num").val(),
                 success: function(data) {
-                    alert(data.user_num+" "+data.user_id+" "+data.user_pw+" "+data.user_email);
+                    alert(data.num+" "+data.id+" "+data.pw+" "+data.email+" "+data.age+" "+data.sex);
                 }
             });
         }

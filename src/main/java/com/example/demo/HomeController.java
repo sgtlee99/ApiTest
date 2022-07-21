@@ -1,14 +1,21 @@
 package com.example.demo;
 
-import org.springframework.http.HttpStatus;
+import com.cafein.login.SessionManager;
+import com.cafein.login.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class Demo1Controller {
+public class HomeController {
+
+    private final SessionManager sessionManager;
+
+    public HomeController(SessionManager sessionManager) {
+        this.sessionManager = sessionManager;
+    }
 
     @RequestMapping("/test") //테스트 페이지
     public String welcome() {
@@ -16,13 +23,16 @@ public class Demo1Controller {
     }
 
     @RequestMapping("/")
-    public String defalut() {
-        return "로그인";
-    }
+    public String login(HttpServletRequest request, Model model) {
+        //세션 관리자에 저장된 회원 정보 조회
+        User user = (User) sessionManager.getSession(request);
 
-    @RequestMapping("/로그인")
-    public String login() {
-        return "로그인";
+        // [세션ID 쿠키]에 해당되는 세션 데이터없음
+        if (user == null) { return "로그인";}
+
+        // 세션있음. 로그인상태 유지
+        model.addAttribute("user", user);
+        return "메인화면";
     }
     
     @RequestMapping("/메인화면")
