@@ -58,7 +58,7 @@
             var num = $("#num").val();
             $.ajax({
                 type: "GET",
-                url: "/user/"+1, <!--임시로 1로 설정 스프링에 쿠키 만들기 전까지-->
+                url: "/user/info", <!--임시로 1로 설정 스프링에 쿠키 만들기 전까지-->
                 success: function(data) {
                     $('input[name=nick]').attr('value',data.nick);
                     $('input[name=email]').attr('value',data.email);

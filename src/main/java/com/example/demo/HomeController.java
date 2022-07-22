@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
 import com.cafein.login.SessionManager;
 import com.cafein.login.User;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Controller
 public class HomeController {
@@ -23,10 +25,10 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String login(HttpServletRequest request, Model model) {
+    public String login(HttpSession httpSession, Model model) {
         //세션 관리자에 저장된 회원 정보 조회
-        User user = (User) sessionManager.getSession(request);
 
+        User user = (User)httpSession.getAttribute("user");
         // [세션ID 쿠키]에 해당되는 세션 데이터없음
         if (user == null) { return "로그인";}
 

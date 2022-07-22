@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.cafein.login.User;
 import com.cafein.login.UserService;
 import com.dto.UserLoginRequestDto;
 import com.dto.UserRegisterRequestDto;
@@ -7,6 +8,9 @@ import com.dto.UserUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,8 +25,8 @@ public class UserApiController {
         return ResponseEntity.ok().body(dto.getId());
     }
     @PostMapping(value="/android/login")
-    public ResponseEntity<?> androidLogin(@RequestBody UserLoginRequestDto dto) {
-        userService.login(dto);
+    public ResponseEntity<?> androidLogin(@RequestBody UserLoginRequestDto dto, HttpServletResponse response) {
+        userService.login(dto, response);
         return ResponseEntity.ok().body("login success!");
         //return ResponseEntity.ok().body(userService.login(dto));
     }
@@ -34,8 +38,9 @@ public class UserApiController {
     }
 
     @PutMapping(value="/android/update")
-    public ResponseEntity<?> androidUpdate(Long num, @RequestBody UserUpdateDto dto) {
-        userService.update(num, dto);
+    public ResponseEntity<?> androidUpdate(HttpSession httpSession, @RequestBody UserUpdateDto dto) {
+        User user = (User)httpSession.getAttribute("user");
+        userService.update(user.getNum(), dto);
         System.out.println("runnnn");
         return ResponseEntity.ok().body("update success!");
     }

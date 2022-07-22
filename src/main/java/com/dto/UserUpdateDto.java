@@ -13,7 +13,7 @@ public class UserUpdateDto {
     private String nick;
     private String email;
     private Integer groups;
-    private byte[] proImg;
+    //private byte[] proImg;
     private int age;
     private Sex sex;
 

@@ -51,7 +51,7 @@ public class User {
         this.nick = updateDto.getNick();
         this.email = updateDto.getEmail();
         this.groups = updateDto.getGroups(); // 설문조사 후 업데이트로 넣기
-        this.proImg = updateDto.getProImg(); // 회원정보수정 할때 업데이트로 넣기
+        //this.proImg = updateDto.getProImg(); // 회원정보수정 할때 업데이트로 넣기
         this.age = updateDto.getAge(); // 설문조사할때 물어볼꺼임
     }
 }

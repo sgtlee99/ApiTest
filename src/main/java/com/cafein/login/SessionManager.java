@@ -23,6 +23,7 @@ public class SessionManager {
 
         //쿠키 생성
         Cookie mySessionCookie = new Cookie(SESSION_COOKIE_NAME, sessionId);
+        System.out.println(sessionId);
         response.addCookie(mySessionCookie);
     }
 
@@ -30,6 +31,7 @@ public class SessionManager {
     public Object getSession(HttpServletRequest request) {
         Cookie sessionCookie = findCookie(request, SESSION_COOKIE_NAME);
         if (sessionCookie == null) {
+            System.out.println("null");
             return null;
         }
         return sessionStore.get(sessionCookie.getValue());

@@ -106,7 +106,7 @@
                     };
                     $.ajax({
                         type: "PUT",
-                        url: "/user/"+1+"/update",
+                        url: "/user/update",
                         data:JSON.stringify(data)
                     }).done(function(){ // done - success 와 동일
                         alert('성공');
@@ -177,10 +177,10 @@
 				여자
 			</label>
 		</div>
-        <div class="container1" style="margin-top: 3%; width: 30.7vw;">
+        <!--<div class="container1" style="margin-top: 3%; width: 30.7vw;">
 		    <h5 style="display: inline-block;">프로필사진 변경</h5>
 			<input type="file" accept="image/*," required style="display: inline-block;" id="proImg" name="proImg"/>
-		</div>
+		</div>-->
         <div class="container1" style="margin-top: 3%; width: 30.7vw;">
 		    <button type="submit" class="btn btn-primary shadow-none" style="padding: 0.5%; float:right; border-color: #d29e79; color: #d29e79; width:6vw; height:2vw">
         	    변경 완료

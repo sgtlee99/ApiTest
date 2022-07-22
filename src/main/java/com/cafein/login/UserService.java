@@ -7,12 +7,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @RequiredArgsConstructor
 @Service
 @Transactional
 public class UserService {
 
     private final UserRepository userRepository;
+    private final SessionManager sessionManager;
+    private final HttpSession httpSession;
 
     public User findById(Long num) {
         return userRepository.findById(num).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
@@ -44,10 +49,23 @@ public class UserService {
         userRepository.delete(user);
     }
 
-    public Long login(UserLoginRequestDto requestDto) {
+    public Long login(UserLoginRequestDto requestDto, HttpServletResponse response) {
 
         User user = userRepository.findByUserId(requestDto.getId())
                 .orElseThrow(() -> new IllegalCallerException("테이블에 유저가 없습니다"));
+        if (user.getPw().equals(requestDto.getPw())) {
+            httpSession.setAttribute("user",user);
+            return user.getNum();
+        } else {
+            System.out.println(requestDto.getId());
+            System.out.println(requestDto.getPw());
+            throw new IllegalCallerException("패스워드불일치");
+        }
+    }
+    public Long androidLogin(UserLoginRequestDto requestDto) {
+
+        User user = userRepository.findByUserId(requestDto.getId())
+                                  .orElseThrow(() -> new IllegalCallerException("테이블에 유저가 없습니다"));
         if (user.getPw().equals(requestDto.getPw())) {
             return user.getNum();
         } else {
