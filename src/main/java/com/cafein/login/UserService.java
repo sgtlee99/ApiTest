@@ -56,7 +56,7 @@ public class UserService {
         if (user.getPw().equals(requestDto.getPw())) {
             httpSession.setAttribute("user",user);
             return user.getNum();
-        } else {
+        } else {                                            
             System.out.println(requestDto.getId());
             System.out.println(requestDto.getPw());
             throw new IllegalCallerException("패스워드불일치");
