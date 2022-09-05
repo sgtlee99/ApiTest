@@ -1,5 +1,6 @@
 package com.cafein.login;
 
+import com.dto.CafePostUpdateDto;
 import com.dto.UserUpdateDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,28 +21,33 @@ public class CafePost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
-    private Long postnum;
+    private Long post_num;
 
     @Column(nullable = false) //DB Column을 명시
     private Long num;
 
     @Column(nullable = false) //DB Column을 명시
-    private String posttext;
+    private String post_text;
 
     @Column(nullable = false) //DB Column을 명시
-    private String posttitle;
+    private String post_title;
 
-    private LocalDateTime revpostdate;
+    private LocalDateTime post_date;
 
     @Column(nullable = false) //DB Column을 명시
     private String id; //세션에서 아이디를 들고오면 되지 않을까?
 
     @Column(columnDefinition = "longblob default 'EMPTY'")
-    private byte[] proImg;
+    private byte[] post_img;
 
-    @ManyToOne
-    @JoinColumn(name = "user_num")
+    @ManyToOne //user과 cafepost는 일대다
+    @JoinColumn(name = "user_num") // 외래키
     private User user;
 
-
+    public void update(CafePostUpdateDto updateDto) {
+        this.post_text = updateDto.getPost_text();
+        this.post_title = updateDto.getPost_title();
+        this.post_date = updateDto.getPost_date();
+        this.post_img = updateDto.getPost_img();
+    }
 }
