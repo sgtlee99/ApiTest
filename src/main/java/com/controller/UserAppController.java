@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 @RequiredArgsConstructor
 @RestController
-public class UserApiController {
+public class UserAppController {
 
     private final UserService userService;
 
@@ -44,4 +44,5 @@ public class UserApiController {
         System.out.println("runnnn");
         return ResponseEntity.ok().body("update success!");
     }
+
 }

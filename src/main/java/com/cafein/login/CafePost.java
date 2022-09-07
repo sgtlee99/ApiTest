@@ -47,7 +47,6 @@ public class CafePost {
     public void update(CafePostUpdateDto updateDto) {
         this.post_text = updateDto.getPost_text();
         this.post_title = updateDto.getPost_title();
-        this.post_date = updateDto.getPost_date();
         this.post_img = updateDto.getPost_img();
     }
 }

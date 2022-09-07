@@ -1,8 +1,6 @@
 package com.dto;
 
 import com.cafein.login.CafePost;
-import com.cafein.login.Com;
-import com.cafein.login.Sex;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,7 +12,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CafePostReadRequestDto {
+public class CafePostListReadRequestDto {
 
     private String post_text;
     private String post_title;
@@ -23,11 +21,11 @@ public class CafePostReadRequestDto {
     private byte[] post_img;
     private long num; //필요한가?
 
-    public CafePostReadRequestDto(CafePost entity) {
-        this.id = entity.getId();
-        this.post_title = entity.getPost_title();
+    public CafePostListReadRequestDto(CafePost entity) {
         this.post_text = entity.getPost_text();
+        this.post_title = entity.getPost_title();
         this.post_date = entity.getPost_date();
+        this.id = entity.getId();
         this.post_img = entity.getPost_img();
         this.num = entity.getNum();
     }
