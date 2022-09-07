@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CafePostListReadRequestDto {
 
-    private String post_text;
     private String post_title;
     private LocalDateTime post_date;
     private String id;
@@ -22,7 +21,6 @@ public class CafePostListReadRequestDto {
     private long num; //필요한가?
 
     public CafePostListReadRequestDto(CafePost entity) {
-        this.post_text = entity.getPost_text();
         this.post_title = entity.getPost_title();
         this.post_date = entity.getPost_date();
         this.id = entity.getId();

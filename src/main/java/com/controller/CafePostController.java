@@ -21,17 +21,17 @@ public class CafePostController {
 
     @PutMapping("/cafePost/update/{post_num}") //수정
     public Long update(@PathVariable Long post_num, @RequestBody CafePostUpdateDto cafePostUpdateDto) {
-        return CafePostService.update(post_num, cafePostUpdateDto); // 왜 static을 붙이라고 뜨는걸까? user은 안그랬는데
+        return cafePostService.update(post_num, cafePostUpdateDto);
     }
 
     @GetMapping("/cafePost/info") //조회 목록
     public List<CafePostListReadRequestDto> allPost() {
-        return CafePostService.searchAll(); //얘도 static쓰라하네?
+        return cafePostService.searchAll();
     }
 
     @GetMapping("/cafePost/info/{post_num}") // 조회 상세
     public CafePostReadRequestDto detailPost(@PathVariable Long post_num) {
-        return CafePostService.searchById(post_num);
+        return cafePostService.searchById(post_num);
     }
 
     @DeleteMapping("/cafePost/{post_num}/delete") //삭제
