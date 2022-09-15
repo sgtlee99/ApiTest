@@ -1,11 +1,10 @@
 package com.controller;
 
-import com.cafein.login.*;
+import com.cafein.cafePost.CafePostService;
 import com.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequiredArgsConstructor

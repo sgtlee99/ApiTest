@@ -1,8 +1,6 @@
 package com.dto;
 
-import com.cafein.login.CafePost;
-import com.cafein.login.Com;
-import com.cafein.login.Sex;
+import com.cafein.cafePost.CafePost;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

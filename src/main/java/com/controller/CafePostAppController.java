@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.cafein.login.CafePostService;
+import com.cafein.cafePost.CafePostService;
 import com.dto.CafePostListReadRequestDto;
 import com.dto.CafePostReadRequestDto;
 import com.dto.CafePostRegisterRequestDto;

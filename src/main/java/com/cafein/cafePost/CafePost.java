@@ -1,5 +1,6 @@
-package com.cafein.login;
+package com.cafein.cafePost;
 
+import com.cafein.login.User;
 import com.dto.CafePostUpdateDto;
 import com.dto.UserUpdateDto;
 import lombok.AllArgsConstructor;

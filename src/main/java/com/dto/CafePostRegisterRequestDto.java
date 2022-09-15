@@ -1,12 +1,10 @@
 package com.dto;
 
-import com.cafein.login.CafePost;
+import com.cafein.cafePost.CafePost;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Builder
