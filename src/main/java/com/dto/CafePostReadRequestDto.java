@@ -29,6 +29,6 @@ public class CafePostReadRequestDto {
         this.post_text = entity.getPost_text();
         this.post_date = entity.getPost_date();
         this.post_img = entity.getPost_img();
-        this.num = entity.getNum();
+        //this.num = entity.getNum();
     }
 }

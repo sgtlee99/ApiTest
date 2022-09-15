@@ -27,13 +27,14 @@ public class UserAppController {
     @PostMapping(value="/android/login")
     public ResponseEntity<?> androidLogin(@RequestBody UserLoginRequestDto dto, HttpServletResponse response) {
         userService.login(dto, response);
+        System.out.println("로그인성공");
         return ResponseEntity.ok().body("login success!");
         //return ResponseEntity.ok().body(userService.login(dto));
     }
     @PostMapping(value="/android/register")
     public ResponseEntity<?> androidRegister(@RequestBody UserRegisterRequestDto dto) {
         userService.register(dto);
-        System.out.println("runnnn");
+        System.out.println("회원가입성공");
         return ResponseEntity.ok().body("register success!");
     }
 
@@ -41,16 +42,16 @@ public class UserAppController {
     public ResponseEntity<?> androidUpdate(HttpSession httpSession, @RequestBody UserUpdateDto dto) {
         User user = (User)httpSession.getAttribute("user");
         userService.update(user.getNum(), dto);
-        System.out.println("runnnn");
+        System.out.println("수정성공");
         return ResponseEntity.ok().body("update success!");
     }
 
-    @GetMapping(value="/android/info")
+    /*@GetMapping(value="/android/info") // 정보꺼내올때 사용
     public ResponseEntity<?> androidInfo(HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
         userService.findById(user.getNum());
         System.out.println("runnnn");
         return ResponseEntity.ok().body("update success!");
-    }
+    }*/
 
 }

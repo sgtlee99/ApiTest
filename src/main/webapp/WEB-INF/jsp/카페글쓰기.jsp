@@ -79,6 +79,16 @@
         }
    </style>
    <script>
+        $.ajaxSetup({
+            dataType : "json",
+                contentType: 'application/json; charset=utf-8',
+        		success:function(result){
+        		    alert(result);
+        	    },
+        		error: function (jqXHR) {
+                    alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+            }
+        });//ajaxSetup
         function extract_hashtags() {
             var content_from = document.getElementById('ta_w');
             var hashtag_to = document.getElementById('ta_r');
@@ -97,6 +107,34 @@
                 hashtag_to.innerHTML = hashtag_html;
             }
         }
+        $(document).ready(function(){
+            $("#userInfo").submit(function(event) {
+                if (checkValue() == false) {
+                    alert('입력해');
+                    return false;
+                } else {
+                    event.preventDefault();
+                    const data = {
+                         id: $('#user_id').val(),
+                         pw: $('#user_pw').val(),
+                         nick: $('#user_nick').val(),
+                         email: $('#user_email').val(),
+                         com: $('#user_com').val(),
+                         sex: $('#user_sex').val(),
+                     };
+                     $.ajax({
+                         type: "POST",
+                         url: "/user",
+                         data:JSON.stringify(data)
+                     }).done(function(){ // done - success 와 동일
+                         alert('성공');
+                         location.href='설문조사';
+                     }).fail(function (error) {
+                         alert(JSON.stringify(error));
+                     });
+                }
+            });
+        });
         </script>
 </head>
 <body>

@@ -23,8 +23,8 @@ public class CafePost {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
     private Long post_num;
 
-    @Column(nullable = false) //DB Column을 명시
-    private Long num;
+    //@Column(nullable = false) //DB Column을 명시
+    //private Long num;
 
     @Column(nullable = false) //DB Column을 명시
     private String post_text;
@@ -41,8 +41,10 @@ public class CafePost {
     private byte[] post_img;
 
     @ManyToOne //user과 cafepost는 일대다
-    @JoinColumn(name = "user_num") // 외래키
-    private User user;
+    @JoinColumn(name = "num") // 외래키
+    private User num;
+
+    private String post_tag;
 
     public void update(CafePostUpdateDto updateDto) {
         this.post_text = updateDto.getPost_text();
