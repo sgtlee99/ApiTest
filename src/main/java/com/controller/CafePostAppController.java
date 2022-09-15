@@ -44,4 +44,8 @@ public class CafePostAppController {
         cafePostService.delete(post_num);
         return post_num;
     }
+    @GetMapping("/android/cafePost/infoTest")
+    public List<CafePostListReadRequestDto> testPost() {
+        return cafePostService.searchAll();
+    }
 }

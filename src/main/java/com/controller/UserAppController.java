@@ -46,12 +46,12 @@ public class UserAppController {
         return ResponseEntity.ok().body("update success!");
     }
 
-    /*@GetMapping(value="/android/info") // 정보꺼내올때 사용
+    @GetMapping(value="/android/info") // 정보꺼내올때 사용
     public ResponseEntity<?> androidInfo(HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
         userService.findById(user.getNum());
         System.out.println("runnnn");
         return ResponseEntity.ok().body("update success!");
-    }*/
+    }
 
 }

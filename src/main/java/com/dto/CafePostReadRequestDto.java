@@ -16,12 +16,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CafePostReadRequestDto {
 
-    private String post_text;
     private String post_title;
-    private LocalDateTime post_date;
+    private String post_text;
+    private LocalDateTime post_date; // test할때 date를 tag로
     private String id;
     private byte[] post_img;
-    private long num; //필요한가?
+    private long num; //필요한가? //test할때 지우고..
 
     public CafePostReadRequestDto(CafePost entity) {
         this.id = entity.getId();

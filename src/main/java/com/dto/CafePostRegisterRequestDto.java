@@ -20,7 +20,7 @@ public class CafePostRegisterRequestDto {
 
     private String post_tag;
     private String id;
-    //private byte[] post_img;
+    private byte[] post_img;
     //private long num;
 
     public CafePost toEntity() {
@@ -30,7 +30,7 @@ public class CafePostRegisterRequestDto {
                        .post_title(this.post_title)
                        .post_tag(this.post_tag)
                        //.post_date(this.post_date)
-                       //.post_img(this.post_img)
+                       .post_img(this.post_img)
                        //.num(this.num)
                        .build();
     }
