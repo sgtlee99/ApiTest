@@ -108,17 +108,17 @@
             }
         }
         $(document).ready(function(){
-            $("#userInfo").submit(function(event) {
+            $("#cafePost").submit(function(event) {
                 if (checkValue() == false) {
                     alert('입력해');
                     return false;
                 } else {
                     event.preventDefault();
                     const data = {
-                         id: $('#user_id').val(),
-                         pw: $('#user_pw').val(),
-                         nick: $('#user_nick').val(),
-                         email: $('#user_email').val(),
+                         post_title: $('#user_id').val(),
+                         post_text: $('#user_pw').val(),
+                         post_tag: $('#user_nick').val(),
+                         post_img: $('#user_email').val(),
                          com: $('#user_com').val(),
                          sex: $('#user_sex').val(),
                      };
@@ -155,7 +155,7 @@
       </a>
    </div>
    <div class="container1" style="position: absolute; left: 35%; top: 10%; padding: 1%; width: 35vw; border: 3px solid #A0A0A0; border-radius: 20px;">
-      <form name="" action="" method="get"><!--form태그를 넣어봤는데 추후에 서버에 실적용이 되는지 모르겠다-->
+      <form name="cafePost" action="" method="get"><!--form태그를 넣어봤는데 추후에 서버에 실적용이 되는지 모르겠다-->
          <div style="border-bottom: 2px solid black; height: 6vh;">
             <h2>카페 글쓰기</h2>
          </div>

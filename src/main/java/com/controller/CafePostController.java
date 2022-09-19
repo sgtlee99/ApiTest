@@ -1,10 +1,12 @@
 package com.controller;
 
 import com.cafein.cafePost.CafePostService;
+import com.cafein.login.User;
 import com.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -14,8 +16,9 @@ public class CafePostController {
     private final CafePostService cafePostService;
 
     @PostMapping("/cafePost") // 생성
-    public Long create(@RequestBody CafePostRegisterRequestDto cafePostRegisterRequestDto) {
-        return cafePostService.register(cafePostRegisterRequestDto);
+    public Long create(@RequestBody CafePostingRequestDto cafePostRegisterRequestDto, HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("user");
+        return cafePostService.posting(user.getNum(), cafePostRegisterRequestDto);
     }
 
     @PutMapping("/cafePost/update/{post_num}") //수정

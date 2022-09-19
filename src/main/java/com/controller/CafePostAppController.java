@@ -1,14 +1,16 @@
 package com.controller;
 
 import com.cafein.cafePost.CafePostService;
+import com.cafein.login.User;
 import com.dto.CafePostListReadRequestDto;
 import com.dto.CafePostReadRequestDto;
-import com.dto.CafePostRegisterRequestDto;
+import com.dto.CafePostingRequestDto;
 import com.dto.CafePostUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,8 +20,9 @@ public class CafePostAppController {
     private final CafePostService cafePostService;
 
     @PostMapping("/android/cafePost") // 생성
-    public ResponseEntity<?> create(@RequestBody CafePostRegisterRequestDto cafePostRegisterRequestDto) {
-        cafePostService.register(cafePostRegisterRequestDto);
+    public ResponseEntity<?> create(@RequestBody CafePostingRequestDto cafePostRegisterRequestDto, HttpSession httpSession) {
+        User user = (User)httpSession.getAttribute("user");
+        cafePostService.posting(user.getNum(), cafePostRegisterRequestDto);
         return ResponseEntity.ok().body("create success!");
     }
 

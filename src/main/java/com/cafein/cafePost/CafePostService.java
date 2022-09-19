@@ -14,12 +14,13 @@ import java.util.stream.Collectors;
 public class CafePostService {
 
     private final CafePostRepository cafePostRepository;
-    private CafePost cafePost;
 
-    public Long register(CafePostRegisterRequestDto cafePostRegisterRequestDto) { //카페글 등록
+    public Long posting(Long num, CafePostingRequestDto cafePostRegisterRequestDto) { //카페글 등록
         CafePost cafePost = cafePostRegisterRequestDto.toEntity();
-        CafePost save = cafePostRepository.save(cafePost);
-        return save.getPost_num();
+        CafePost cafeSave = cafePostRepository.save(cafePost);
+        cafeSave.saveNum(num); // Long -> User ?
+
+        return cafeSave.getPost_num();
     }
     public void delete(Long post_num) { //삭제
         CafePost cafePost = findById(post_num);

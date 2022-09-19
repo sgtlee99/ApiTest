@@ -52,4 +52,7 @@ public class CafePost {
         this.post_title = updateDto.getPost_title();
         this.post_img = updateDto.getPost_img();
     }
+    public void saveNum(Long num) {
+        this.num = Long.valueOf(String.valueOf(num)); // object -> long
+    }
 }
