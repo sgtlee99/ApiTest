@@ -15,10 +15,10 @@ public class CafePostService {
 
     private final CafePostRepository cafePostRepository;
 
-    public Long posting(Long num, CafePostingRequestDto cafePostRegisterRequestDto) { //카페글 등록
-        CafePost cafePost = cafePostRegisterRequestDto.toEntity();
+    public Long posting(Long num, CafePostingRequestDto cafePostingRequestDto) { //카페글 등록
+        CafePost cafePost = cafePostingRequestDto.toEntity();
         CafePost cafeSave = cafePostRepository.save(cafePost);
-        cafeSave.saveNum(num); // Long -> User ?
+        cafeSave.saveNum(String.valueOf(num)); // Long -> User ?
 
         return cafeSave.getPost_num();
     }

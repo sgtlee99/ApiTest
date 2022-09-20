@@ -144,13 +144,13 @@
       <img src="https://icon-icons.com/icons2/510/PNG/128/coffee_icon-icons.com_50414.png" style="float: left; width: 7vw;" alt="이미지">
    </div>
    <div class="bar" style="width: 5vw;">
-      <a href="메인화면.html">
+      <a href="메인화면">
          <img src="https://user-images.githubusercontent.com/102495801/167056604-ed2c2e9c-426d-455b-84f9-54bb4f82a0c2.png" alt="main_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
       </a>
-      <a href="카페글쓰기.html">
+      <a href="카페글쓰기">
          <img src="https://user-images.githubusercontent.com/102495801/167056127-afdaad04-d13b-4a33-a4c0-9c2d8904ead8.png" alt="write_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
       </a>
-      <a href="마이페이지 사용자.html">
+      <a href="마이페이지 사용자">
          <img src="https://user-images.githubusercontent.com/102495801/167056576-0a2c3920-d8f8-47b2-bdcb-dd4d2a9cd205.png" alt="mypage_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
       </a>
    </div>
@@ -179,7 +179,7 @@
             </div>
             <textarea placeholder="태그입력" style="resize: none; width: 32.5vw; height: 3.5vh; margin-top: 2%;"></textarea>
             <div id="ta_r" style="text-align:left;">자동태그</div>
-            <li><button type="button" onclick="location.href='메인화면.html'">완료</button></li>
+            <li><button type="button" onclick="location.href='메인화면'">완료</button></li>
          </ul>
       </form>
    </div>

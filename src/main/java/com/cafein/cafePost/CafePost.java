@@ -1,17 +1,13 @@
 package com.cafein.cafePost;
 
-import com.cafein.login.User;
 import com.dto.CafePostUpdateDto;
-import com.dto.UserUpdateDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity //DB의 테이블을 뜻함
 @Getter //Lombok의 Getter를 이용해 Getter 메소드를 생성하고 @Builder 를 이용해서 객체를 생성할 수 있게 처리한다
@@ -23,9 +19,6 @@ public class CafePost {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
     private Long post_num;
-
-    //@Column(nullable = false) //DB Column을 명시
-    //private Long num;
 
     @Column(nullable = false) //DB Column을 명시
     private String post_text;
@@ -43,7 +36,7 @@ public class CafePost {
 
     @ManyToOne //user과 cafepost는 일대다
     @JoinColumn(name = "num") // 외래키
-    private User num;
+    private String num;
 
     private String post_tag;
 
@@ -52,7 +45,7 @@ public class CafePost {
         this.post_title = updateDto.getPost_title();
         this.post_img = updateDto.getPost_img();
     }
-    public void saveNum(Long num) {
-        this.num = Long.valueOf(String.valueOf(num)); // object -> long
+    public void saveNum(String num) {
+        this.num = num; // object -> long
     }
 }

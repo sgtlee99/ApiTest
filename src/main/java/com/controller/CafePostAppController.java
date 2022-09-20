@@ -20,9 +20,9 @@ public class CafePostAppController {
     private final CafePostService cafePostService;
 
     @PostMapping("/android/cafePost") // 생성
-    public ResponseEntity<?> create(@RequestBody CafePostingRequestDto cafePostRegisterRequestDto, HttpSession httpSession) {
+    public ResponseEntity<?> create(@RequestBody CafePostingRequestDto cafePostingRequestDto, HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
-        cafePostService.posting(user.getNum(), cafePostRegisterRequestDto);
+        cafePostService.posting(user.getNum(), cafePostingRequestDto);
         return ResponseEntity.ok().body("create success!");
     }
 
