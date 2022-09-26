@@ -30,7 +30,7 @@ public class CafePostingRequestDto {
                        .post_tag(this.post_tag)
                        //.post_date(this.post_date)
                        .post_img(this.post_img)
-                       .num(String.valueOf(this.num))
+                       .num(this.num)
                        .build();
     }
     // 바이트를 받고 비트맵으로 변환(웹앱에서) 로컬(서버)에서 파일(이미지넣)

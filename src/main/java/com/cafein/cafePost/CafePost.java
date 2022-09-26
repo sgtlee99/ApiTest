@@ -1,5 +1,6 @@
 package com.cafein.cafePost;
 
+import com.cafein.login.User;
 import com.dto.CafePostUpdateDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor //@Builder를 이용하기 위해 @AllArgsConstructor 와 @NoArgsConstructor 를 같이 처리해야 컴파일 에러가 발생하지 않음
 @AllArgsConstructor
 @Builder
-public class CafePost {
+public class CafePost<T> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
@@ -36,7 +37,7 @@ public class CafePost {
 
     @ManyToOne //user과 cafepost는 일대다
     @JoinColumn(name = "num") // 외래키
-    private String num;
+    private User num;
 
     private String post_tag;
 
@@ -45,7 +46,8 @@ public class CafePost {
         this.post_title = updateDto.getPost_title();
         this.post_img = updateDto.getPost_img();
     }
-    public void saveNum(String num) {
-        this.num = num; // object -> long
+    public void saveNum(Long num) {
+        CafePost<Long> cnum = new CafePost<>();
+        this.num = cnum.num; // object -> long
     }
 }

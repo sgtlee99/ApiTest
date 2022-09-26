@@ -18,7 +18,7 @@ public class CafePostService {
     public Long posting(Long num, CafePostingRequestDto cafePostingRequestDto) { //카페글 등록
         CafePost cafePost = cafePostingRequestDto.toEntity();
         CafePost cafeSave = cafePostRepository.save(cafePost);
-        cafeSave.saveNum(String.valueOf(num)); // Long -> User ?
+        cafeSave.saveNum(num); // Long -> User ?
 
         return cafeSave.getPost_num();
     }
