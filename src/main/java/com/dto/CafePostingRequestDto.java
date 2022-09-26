@@ -18,13 +18,13 @@ public class CafePostingRequestDto {
     //private LocalDateTime post_date;
 
     private String post_tag;
-    private String id;
+    //private String id;
     private byte[] post_img;
     private User num;
 
     public CafePost toEntity() {
         return CafePost.builder()
-                       .id(this.id)
+                       //.id(this.id)
                        .post_text(this.post_text)
                        .post_title(this.post_title)
                        .post_tag(this.post_tag)
