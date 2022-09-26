@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 public class UserService {
 
     private final UserRepository userRepository;
-    private final SessionManager sessionManager;
     private final HttpSession httpSession;
 
     public User findById(Long num) {

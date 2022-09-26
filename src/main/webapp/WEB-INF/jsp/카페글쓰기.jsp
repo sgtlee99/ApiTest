@@ -115,20 +115,18 @@
                 } else {
                     event.preventDefault();
                     const data = {
-                         post_title: $('#user_id').val(),
-                         post_text: $('#user_pw').val(),
-                         post_tag: $('#user_nick').val(),
-                         post_img: $('#user_email').val(),
-                         com: $('#user_com').val(),
-                         sex: $('#user_sex').val(),
+                         post_title: $('#post_title').val(),
+                         post_text: $('#post_text').val(),
+                         post_tag: $('#post_tag').val(),
+                         post_img: $('#post_img').val()
                      };
                      $.ajax({
                          type: "POST",
-                         url: "/user",
+                         url: "/cafePost",
                          data:JSON.stringify(data)
                      }).done(function(){ // done - success 와 동일
                          alert('성공');
-                         location.href='설문조사';
+                         location.href='메인화면';
                      }).fail(function (error) {
                          alert(JSON.stringify(error));
                      });
