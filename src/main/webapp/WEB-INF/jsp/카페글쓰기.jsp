@@ -115,7 +115,9 @@
                 const data = {
                     post_title: $('#post_title').val(),
                     post_text: $('#post_text').val(),
+                    post_tag: $('#post_tag1').val(),
                     post_tag: $('#post_tag').val(),
+                    post_img: $('#post_img').val()
                 };
                 $.ajax({
                     type: "POST",
@@ -170,7 +172,7 @@
                </div>
                <input type="file" id="post_img" name="post_img" accept="image/*," multiple required style="float: left; margin-top: 2%;"/>
             </div>
-            <textarea placeholder="태그입력" style="resize: none; width: 32.5vw; height: 3.5vh; margin-top: 2%;"></textarea>
+            <textarea placeholder="태그입력" style="resize: none; width: 32.5vw; height: 3.5vh; margin-top: 2%;" id="post_tag1" name="post_tag1"></textarea>
             <div style="text-align:left;" id="post_tag" name="post_tag">자동태그</div>
             <li>
                 <button type="submit">완료</button>

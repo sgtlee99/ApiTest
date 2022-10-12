@@ -29,7 +29,7 @@ public class CafePost<T> {
 
     private LocalDateTime post_date;
 
-    @Column(nullable = false) //DB Column을 명시
+    @Column //DB Column을 명시
     private String id; //세션에서 아이디를 들고오면 되지 않을까?
 
     @Column(columnDefinition = "longblob default 'EMPTY'")
@@ -50,4 +50,14 @@ public class CafePost<T> {
         CafePost<Long> cnum = new CafePost<>();
         this.num = cnum.num; // object -> long
     }
+    /* @@@ byte -> string
+     byte[] byteArray = {0x48, 0x65, (byte)0x6C, (byte)0x6C, (byte)0x6f, 0x20, 0x57, (byte)0x6f, 0x72, (byte)0x6c, 0x64};
+     String data = new String(byteArray); //변환
+     System.out.println(data);
+
+     @@@ string -> byte
+     String data = "Hello World";
+     System.out.println(data.getBytes()); //byte array 출력
+     System.out.println(byteArrayToHexaString(data.getBytes())); //byte array를 16진수 문자열로 출력
+     */
 }
