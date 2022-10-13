@@ -68,12 +68,12 @@
 			</form>
 		</div>
 		<div class="col-auto">
-			<button type="submit" class="btn btn-primary" style="width: 99%; height: 4vh; color: white; background-color: red; margin: 4% auto; border: none;" onclick="location.href='로그인' ">다음</button>
+			<button type="submit" class="btn btn-primary" style="width: 99%; height: 4vh; color: white; background-color: red; margin: 4% auto; border: none;" onclick="location.href='/' ">다음</button>
 			<button type="submit" class="btn btn-primary" style="width: 99%; height: 4vh; color: white; background-color: red; margin-bottom: 4%; border: none;" onclick="location.href='회원가입' ">가입하기</button>
 		</div>
 		<div class="s1">
 			<a href="비밀번호찾기" style="margin: 10%;">비밀번호 찾기</a>
-			<a href="로그인" style="margin: 10%;">로그인</a>
+			<a href="/" style="margin: 10%;">로그인</a>
 		</div>
 		<script>
 			const form1 = document.querySelector('form[id="contact-form"]');

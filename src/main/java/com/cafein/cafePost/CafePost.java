@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor //@Builder를 이용하기 위해 @AllArgsConstructor 와 @NoArgsConstructor 를 같이 처리해야 컴파일 에러가 발생하지 않음
 @AllArgsConstructor
 @Builder
-public class CafePost<T> {
+public class CafePost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // PK값 null을 주면 AUTO_INCREMENT
@@ -47,8 +47,13 @@ public class CafePost<T> {
         this.post_img = updateDto.getPost_img();
     }
     public void saveNum(Long num) {
-        CafePost<Long> cnum = new CafePost<>();
-        this.num = cnum.num; // object -> long
+        //Object obj = String.valueOf(num); //long->obj
+        //User user = (User)obj; // object -> long
+        //this.num = user;
+        //System.out.println(num + " : " + this.num + " : " + user);
+    }
+    public void saveId(String id) {
+        this.id = id;
     }
     /* @@@ byte -> string
      byte[] byteArray = {0x48, 0x65, (byte)0x6C, (byte)0x6C, (byte)0x6f, 0x20, 0x57, (byte)0x6f, 0x72, (byte)0x6c, 0x64};

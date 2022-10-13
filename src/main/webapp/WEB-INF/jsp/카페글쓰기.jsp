@@ -110,13 +110,11 @@
         });//ajaxSetup
         $(document).ready(function(){
             $("#cafePost").submit(function(event) {
-                alert('작성중...');
                 event.preventDefault();
                 const data = {
                     post_title: $('#post_title').val(),
                     post_text: $('#post_text').val(),
                     post_tag: $('#post_tag1').val(),
-                    post_tag: $('#post_tag').val(),
                     post_img: $('#post_img').val()
                 };
                 $.ajax({
@@ -138,7 +136,7 @@
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <h1 style="text-align: center; margin-top: 1%; font-family:BernhardFashion BT; font-weight: bold; font-size: 2.4rem;">Cafe_in</h1>
    <div class="container1" style="position: absolute; border-bottom: 1px solid black; left: 25%; top: 10%; background-color: #EAEAEA; border: 3px solid #A0A0A0; border-radius: 20px;">
-      <img src="https://icon-icons.com/icons2/510/PNG/128/coffee_icon-icons.com_50414.png" style="float: left; width: 7vw;" alt="이미지">
+      <img src="resources/img/coffee.png" style="float: left; width: 7vw;" alt="이미지">
    </div>
    <div class="bar" style="width: 5vw;">
       <a href="메인화면">
@@ -164,12 +162,6 @@
                <button type="button" onclick="extract_hashtags()">변환</button>
             </div>
             <div class="container1" style="width: 32.5vw; padding: 2%;">
-               <div style="width: 8vw; border: 1px solid black; height: 16.5vh; float:left;"><!--카페사진미리보기-->
-                  <img src="" alt="이미지">
-               </div>
-               <div style="margin-left: 2%; width: 8vw; border: 1px solid black; height: 16.5vh; float:left;">
-                  <img src="" alt="이미지">
-               </div>
                <input type="file" id="post_img" name="post_img" accept="image/*," multiple required style="float: left; margin-top: 2%;"/>
             </div>
             <textarea placeholder="태그입력" style="resize: none; width: 32.5vw; height: 3.5vh; margin-top: 2%;" id="post_tag1" name="post_tag1"></textarea>

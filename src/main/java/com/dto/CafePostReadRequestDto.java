@@ -18,7 +18,8 @@ public class CafePostReadRequestDto {
     private String post_text;
     //private LocalDateTime post_date; // test할때 date를 tag로
     //private String id;
-    private String post_img;
+    private byte[] post_img;
+    private Long post_num;
     //private long num; //필요한가? //test할때 지우고..
 
     public CafePostReadRequestDto(CafePost entity) {
@@ -26,7 +27,8 @@ public class CafePostReadRequestDto {
         this.post_title = entity.getPost_title();
         this.post_text = entity.getPost_text();
         //this.post_date = entity.getPost_date();
-        this.post_img = new String(entity.getPost_img());
+        this.post_img = entity.getPost_img();
+        this.post_num = entity.getPost_num();
         //this.num = entity.getNum();
     }
 }

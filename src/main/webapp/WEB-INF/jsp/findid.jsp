@@ -7,8 +7,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 					
-	String user_id = null;
-	String user_email = request.getParameter("email");
+	String id = null;
+	String email = request.getParameter("email");
 					
 	// DB연결에 필요한 변수 선언
 	String url = "jdbc:mariadb://localhost:3306/cafein";
@@ -19,7 +19,7 @@
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 					
-	String sql = "select user_id from USER where user_email = ?";
+	String sql = "select id from USER where email = ?";
 				
 	try{
 		// 드라이버 호출
@@ -30,16 +30,16 @@
 					
 		// pstmt 생성
 		pstmt = conn.prepareStatement(sql);
-		pstmt.setString(1, user_email);
+		pstmt.setString(1, email);
 				
 		// sql실행
 		rs = pstmt.executeQuery();
 		
 					
 		if(rs.next()){ 
-			user_id = rs.getString("user_id");
+			id = rs.getString("id");
 							
-			out.println("<script>alert('아이디는 " + user_id + "'); location.href='아이디찾기';</script>");
+			out.println("<script>alert('아이디는 " + id + "'); location.href='아이디찾기';</script>");
 		} else{ 
 			out.println("<script>alert('조회 실패'); location.href='아이디찾기';</script>");
 		}

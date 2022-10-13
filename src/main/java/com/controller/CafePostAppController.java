@@ -2,6 +2,7 @@ package com.controller;
 
 import com.cafein.cafePost.CafePostService;
 import com.cafein.login.User;
+import com.cafein.login.UserService;
 import com.dto.CafePostListReadRequestDto;
 import com.dto.CafePostReadRequestDto;
 import com.dto.CafePostingRequestDto;
@@ -18,11 +19,12 @@ import java.util.List;
 public class CafePostAppController {
 
     private final CafePostService cafePostService;
+    private final UserService userService;
 
     @PostMapping("/android/cafePost") // 생성
     public ResponseEntity<?> create(@RequestBody CafePostingRequestDto cafePostingRequestDto, HttpSession httpSession) {
         User user = (User)httpSession.getAttribute("user");
-        cafePostService.posting(user.getNum(), cafePostingRequestDto);
+        cafePostService.posting(userService.findById(user.getNum()).getId(), user.getNum(), cafePostingRequestDto);
         return ResponseEntity.ok().body("create success!");
     }
 

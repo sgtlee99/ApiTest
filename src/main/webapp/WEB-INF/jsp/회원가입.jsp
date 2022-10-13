@@ -88,7 +88,7 @@
                          data:JSON.stringify(data)
                      }).done(function(){ // done - success 와 동일
                          alert('성공');
-                         location.href='설문조사';
+                         location.href='/';
                      }).fail(function (error) {
                          alert(JSON.stringify(error));
                      });

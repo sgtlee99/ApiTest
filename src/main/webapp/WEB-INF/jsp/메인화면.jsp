@@ -48,14 +48,6 @@
 		-->
 	</style>
 	<script>
-	    function imageChange() {
-	        var input = document.memberform.file;
-	        var fReader = new FileReader();
-	        fReader.readAsDataURL(input.files[0]);
-	        fReader.onloadend = function(event){
-	            document.memberform.image.src = event.target.result;
-	        }
-	    }
         $.ajaxSetup({
             dataType : "json",
             contentType: 'application/json; charset=utf-8',
@@ -66,20 +58,36 @@
                 alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
             }
 		});//ajaxSetup
-        $(document).ready(function() {
-            alert("go1");
+        function showList() {
             var num = $("#num").val();
             $.ajax({
                 type: "GET",
-                url: "/cafePost/info/1",
+                url: "/cafePost/info/",
                 success: function(data) {
-                    alert("go2");
-                    $('input[name=post_title]').attr('value',data.post_title);
-                    $('input[name=post_text]').attr('value',data.post_text);
-                    $('img[name=post_img]').attr('src',data.post_img);
+                    var htmls ="";
+                        if(data.length < 1) {
+                            htmls.push("게시물이 없습니다");
+                        } else {
+                            $(data).each(function(){
+                                htmls += '<div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">';
+                        		htmls +=	'<div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;">';<!--작성자-->
+                        		htmls +=		'<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="' + this.id + '" disabled/>';
+                        		htmls +=	'</div>';
+                        		htmls +=	'<div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;">';<!--카페사진-->
+                        		htmls +=		'<img src="resources/img/coffee.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">';
+                        		htmls +=	'</div>';
+                        		htmls +=	'<div style="margin-left: 4%; float: left;">';<!--카페이름 내용 태그-->
+                        		htmls +=		'<input style="display: inline-block; background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="' + this.post_title + '" disabled/>';
+                        		htmls +=		'<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_text" value="' + this.post_text + '" disabled/>';
+                        		htmls +=		'<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="' + this.post_tag + '" disabled/>';
+                        		htmls +=	'</div>';
+                        		htmls += '</div>';
+                            });
+                        }
+                    $("#list").html(htmls);
                 }
             });
-        });
+        }
 	</script>
 </head>
 <body>
@@ -108,87 +116,73 @@
 		<button type="button" class="btn btn-outline-warning" style="margin: 7% 3%; width: 3.5vw; height: 4.5vh;">#~~~</button>
 	</div>
 	<div class="container1" style="position: absolute; left: 47%; top: 10%; padding: 1%; background-color: #EAEAEA; width: 35vw; border: 3px solid #A0A0A0; border-radius: 20px;">
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;" onclick="location.href='카페정보'">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244893-164ba9bd-a358-4ff1-88ea-0f25f822d44c.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; float: right; margin-left: 2%; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244811-58e443d6-4921-49d7-9fe9-fbcdac6ec4d0.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;" onclick="location.href='카페정보'">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="" id="img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left; width:40%;"><!--카페이름-->
-				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="post_title" value="11" disabled/>
-			</div>
-			<div style="margin-right: 4%; float: right; width:40%;"><!--작성자-->
-				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="aaa" value="11" disabled/>
-			</div>
-			<div style="width: 10vw; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="post_tag" value="11" disabled/>
-			</div>
-		</div>
+        <div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+            <div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;"><!--작성자-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="길동" disabled/>
+            </div>
+            <div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;"><!--카페사진-->
+                <img src="resources/img/1.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
+            </div>
+            <div style="margin-left: 4%; float: left;"><!--카페이름 내용 태그-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="I❤Coffee" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;text-overflow: ellipsis;" name="post_text" value="동해 번쩍, 서해 번쩍하는 맛입니다." disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="#드립커피 #로스터리" disabled/>
+            </div>
+        </div>
+        <div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+            <div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;"><!--작성자-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="민수" disabled/>
+            </div>
+            <div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;"><!--카페사진-->
+                <img src="resources/img/2.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
+            </div>
+            <div style="margin-left: 4%; float: left;"><!--카페이름 내용 태그-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="Lee's 베이커리" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_text" value="★신메뉴 출시★" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="#크루아상 #베이커리" disabled/>
+            </div>
+        </div>
+        <div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+            <div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;"><!--작성자-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="철수" disabled/>
+            </div>
+            <div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;"><!--카페사진-->
+                <img src="resources/img/3.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
+            </div>
+            <div style="margin-left: 4%; float: left;"><!--카페이름 내용 태그-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="RE : Cafe" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;text-overflow: ellipsis;" name="post_text" value="리모델링 후 새로 오픈합니다." disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="#인테리어 #DIY" disabled/>
+            </div>
+        </div>
+        <div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+            <div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;"><!--작성자-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="영희" disabled/>
+            </div>
+            <div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;"><!--카페사진-->
+                <img src="resources/img/4.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
+            </div>
+            <div style="margin-left: 4%; float: left;"><!--카페이름 내용 태그-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="영진카페" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_text" value="아침 8시 ~ 저녁 8시" disabled/>
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="#복현동 #아메리카노" disabled/>
+            </div>
+        </div>
+        <div class="container1" style="width: 15.6vw; height: 50vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+            <div style="margin-left: 4%; margin-top: 3%; float: left; width: 14.3vw;"><!--작성자-->
+                <input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="id" value="와이거" disabled/>
+            </div>
+            <div style="margin: 4%; margin-top: 20%; margin-bottom: 0%; width: 14.2vw; border: none; height: 24vh;"><!--카페사진-->
+                <img src="resources/img/whitetiger.png" id="post_img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
+            </div>
+            <div style="margin-left: 4%; float: left;"><!--카페이름 내용 태그-->
+                <input style=" background-color:transparent; border:none; font-size:2.2rem; float: left;" name="post_title" value="백호카페" disabled/>
+                <input style="background-color:transparent; border:none; font-size:1.1rem; float: left;text-overflow: ellipsis;" name="post_text" value="방학기간 학교#카페는 휴가입니다" disabled/>
+                <input style=" background-color:transparent; border:none; font-size:1.1rem; float: left;" name="post_tag" value="#영진전문대 #카페" disabled/>
+            </div>
+        </div>
+        <div id="list">
+        </div>
 	</div>
 	<div class="bar" style="width: 5vw;">
 		<a href="메인화면">
@@ -201,5 +195,8 @@
 			<img src="https://user-images.githubusercontent.com/102495801/167056576-0a2c3920-d8f8-47b2-bdcb-dd4d2a9cd205.png" alt="mypage_img" style="margin-top: 30%; width: 2vw; margin-left: 30%;">
 		</a>
 	</div>
+	<script>
+        showList('list');
+    </script>
 </body>
 </html>

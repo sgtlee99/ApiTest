@@ -1,5 +1,7 @@
 package com.cafein.cafePost;
 
+import com.cafein.login.User;
+import com.cafein.login.UserService;
 import com.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +17,11 @@ public class CafePostService {
 
     private final CafePostRepository cafePostRepository;
 
-    public Long posting(Long num, CafePostingRequestDto cafePostingRequestDto) { //카페글 등록
+    public Long posting(String id, Long num, CafePostingRequestDto cafePostingRequestDto) { //카페글 등록
         CafePost cafePost = cafePostingRequestDto.toEntity();
         CafePost cafeSave = cafePostRepository.save(cafePost);
         cafeSave.saveNum(num); // Long -> User ?
+        cafeSave.saveId(id);
         return cafeSave.getPost_num();
     }
     public void delete(Long post_num) { //삭제
@@ -26,7 +29,7 @@ public class CafePostService {
         cafePostRepository.delete(cafePost);
     }
 
-    private CafePost findById(Long post_num) {
+    public CafePost findById(Long post_num) {
         return cafePostRepository.findById(post_num).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 유저입니다."));
     }
 
