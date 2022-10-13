@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	
-	<meta name="viewport" conent="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -55,10 +55,11 @@
             }
 		});//ajaxSetup
         $(document).ready(function() {
+            alert("go");
             var num = $("#num").val();
             $.ajax({
                 type: "GET",
-                url: "/user/info", <!--임시로 1로 설정 스프링에 쿠키 만들기 전까지-->
+                url: "/user/info",
                 success: function(data) {
                     $('input[name=nick]').attr('value',data.nick);
                     $('input[name=email]').attr('value',data.email);

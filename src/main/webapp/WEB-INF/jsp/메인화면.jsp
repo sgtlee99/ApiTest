@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<style>
 		.html { <!--이렇게 하면 10px=1rem이라는데... 반응형으로 텍스트...음 -->
 			fond-size: 62.5%;
@@ -46,6 +47,40 @@
 		}
 		-->
 	</style>
+	<script>
+	    function imageChange() {
+	        var input = document.memberform.file;
+	        var fReader = new FileReader();
+	        fReader.readAsDataURL(input.files[0]);
+	        fReader.onloadend = function(event){
+	            document.memberform.image.src = event.target.result;
+	        }
+	    }
+        $.ajaxSetup({
+            dataType : "json",
+            contentType: 'application/json; charset=utf-8',
+			success:function(result){
+				alert(result);
+			},
+			error: function (jqXHR) {
+                alert("jqXHR status code:"+jqXHR.status+" message:"+jqXHR.responseText);
+            }
+		});//ajaxSetup
+        $(document).ready(function() {
+            alert("go1");
+            var num = $("#num").val();
+            $.ajax({
+                type: "GET",
+                url: "/cafePost/info/1",
+                success: function(data) {
+                    alert("go2");
+                    $('input[name=post_title]').attr('value',data.post_title);
+                    $('input[name=post_text]').attr('value',data.post_text);
+                    $('img[name=post_img]').attr('src',data.post_img);
+                }
+            });
+        });
+	</script>
 </head>
 <body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -127,7 +162,7 @@
 				#~~~ #~~~ #~~~
 			</div>
 		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
+		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;" onclick="location.href='카페정보'">
 			<div style="margin: 2%; float: right;"><!--추천버튼-->
 				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
 			</div>
@@ -141,152 +176,17 @@
 				</div>
 			</div>
 			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244913-196aea78-ddbb-4664-89b2-f2dd0213f556.jpg" alt="이미지" style= "width: 100%; height: 100%;">
+				<img src="" id="img" name="post_img" alt="이미지" style= "width: 100%; height: 100%;">
 			</div>
 			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
+			<div style="margin-left: 4%; float: left; width:40%;"><!--카페이름-->
+				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="post_title" value="11" disabled/>
 			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
+			<div style="margin-right: 4%; float: right; width:40%;"><!--작성자-->
+				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="aaa" value="11" disabled/>
 			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; float: right; margin-left: 2%; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244893-164ba9bd-a358-4ff1-88ea-0f25f822d44c.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244811-58e443d6-4921-49d7-9fe9-fbcdac6ec4d0.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; float: right; margin-left: 2%; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244913-196aea78-ddbb-4664-89b2-f2dd0213f556.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244893-164ba9bd-a358-4ff1-88ea-0f25f822d44c.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
-			</div>
-		</div>
-		<div class="container1" style="width: 15.6vw; height: 44vh; border: 3px solid black; float: right; margin-left: 2%; margin-bottom: 1%; background-color: white;">
-			<div style="margin: 2%; float: right;"><!--추천버튼-->
-				<img src="https://user-images.githubusercontent.com/102495751/167248594-2f214c14-5c6d-4156-816d-b796147e5c6c.png" style="width: 1.5vw;" alt="♡">
-			</div>
-			<div style="margin-left: 4%; float: left; width: 14.3vw;"><!--그룹별추천-->
-				<div class="circle" style="background-color: red;">5</div>
-				<div class="circle" style="background-color: yellow;">1</div>
-				<div class="circle" style="background-color: green;">7</div>
-				<div class="circle" style="background-color: orange;">2</div>
-				<div style="margin: 4%; margin-top: 0px; float: right;"><!--총추천-->
-					<img src="https://user-images.githubusercontent.com/102495751/167248761-2a757747-acd9-42fd-a0c7-62c4d43bab0f.png" style="width: 1.5vw;" alt="(all)">15
-				</div>
-			</div>
-			<div style="margin: 4%; margin-top: 30%; width: 14.2vw; border: 1px solid black; height: 24vh;"><!--카페사진-->
-				<img src="https://user-images.githubusercontent.com/102495801/167244811-58e443d6-4921-49d7-9fe9-fbcdac6ec4d0.jpg" alt="이미지" style= "width: 100%; height: 100%;">
-			</div>
-			<div style="background-color: black; height: 2px; margin: 4%;"></div>
-			<div style="margin-left: 4%; float: left;"><!--카페이름-->
-				a카페
-			</div>
-			<div style="margin-right: 4%; float: right;"><!--작성자-->
-				by Jason
-			</div>
-			<div style="width: 10vw; margin-top: 1%; margin-left: 4%; float: left; text-align: left;"><!--태그-->
-				#~~~ #~~~ #~~~
+			<div style="width: 10vw; margin-left: 4%; float: left; text-align: left;"><!--태그-->
+				<input style="display: inline-block; background-color:transparent; border:none; font-size:1.1rem;" name="post_tag" value="11" disabled/>
 			</div>
 		</div>
 	</div>

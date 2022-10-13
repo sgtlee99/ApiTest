@@ -15,15 +15,17 @@ import java.time.LocalDateTime;
 public class CafePostListReadRequestDto {
 
     private String post_title;
-    private LocalDateTime post_date;
-    private String id;
+    //private LocalDateTime post_date;
+    //private String id;
+    private String post_text;
     private byte[] post_img;
-    private long num; //필요한가?
+    //private long num; //필요한가?
 
     public CafePostListReadRequestDto(CafePost entity) {
         this.post_title = entity.getPost_title();
-        this.post_date = entity.getPost_date();
-        this.id = entity.getId();
+        this.post_text = entity.getPost_text();
+        //this.post_date = entity.getPost_date();
+        //this.id = entity.getId();
         this.post_img = entity.getPost_img();
         //this.num = entity.getNum();
     }
